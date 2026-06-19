@@ -35,3 +35,10 @@ const TOOL_KEYS = {
 
 function App() {
   const { addToast } = useToast();
+
+  const [projectName, setProjectName] = useState('Untitled Project');
+  const [gridSize, setGridSize]   = useState(DEFAULT_GRID_SIZE);
+  const [frames, setFrames]       = useState([createEmptyFrame(DEFAULT_GRID_SIZE)]);
+  const [currentFrameIndex, setCFI] = useState(0);
+  const [history, setHistory]         = useState([[createEmptyFrame(DEFAULT_GRID_SIZE)]]);
+  const [historyIndex, setHistoryIndex] = useState(0);
