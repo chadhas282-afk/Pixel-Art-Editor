@@ -107,3 +107,9 @@ function App() {
           }
         }
         commitFrame(newFrame);
+        addToast('Image imported successfully', 'success');
+      };
+      img.src = ev.target.result;
+    };
+    reader.readAsDataURL(file);
+  };
