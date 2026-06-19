@@ -42,3 +42,9 @@ function App() {
   const [currentFrameIndex, setCFI] = useState(0);
   const [history, setHistory]         = useState([[createEmptyFrame(DEFAULT_GRID_SIZE)]]);
   const [historyIndex, setHistoryIndex] = useState(0);
+  const historyRef = useRef({ history: [[createEmptyFrame(DEFAULT_GRID_SIZE)]], index: 0 });
+  const [selectedTool,  setSelectedTool]  = useState('pencil');
+  const [selectedColor, setSelectedColor] = useState('#ffffff');
+  const [palette,  setPalette]  = useState(DEFAULT_PALETTE);
+  const [recentColors, setRecentColors] = useState([]);
+  const [brushSize,     setBrushSize]     = useState(1);
