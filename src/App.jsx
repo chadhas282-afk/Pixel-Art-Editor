@@ -68,3 +68,13 @@ function App() {
       if (saved.fps) setFps(saved.fps);
       if (saved.palette) setPalette(saved.palette);
       if (saved.projectName) setProjectName(saved.projectName);
+      if (saved.selectedColor) setSelectedColor(saved.selectedColor);
+      if (saved.selectedTool) setSelectedTool(saved.selectedTool);
+      
+      setHistory([saved.frames]);
+      setHistoryIndex(0);
+      historyRef.current = { history: [saved.frames], index: 0 };
+      
+      addToast('Restored previous session', 'info');
+    }, [addToast])
+  );
