@@ -95,3 +95,9 @@ function App() {
         const ctx = tmp.getContext('2d');
         ctx.drawImage(img, 0, 0, gridSize, gridSize);
         const imgData = ctx.getImageData(0, 0, gridSize, gridSize).data;
+              
+        const newFrame = new Array(gridSize * gridSize).fill(null);
+        for (let i = 0; i < gridSize * gridSize; i++) {
+          const r = imgData[i * 4];
+          const g = imgData[i * 4 + 1];
+          const b = imgData[i * 4 + 2];
