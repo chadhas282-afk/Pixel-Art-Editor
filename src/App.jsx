@@ -101,3 +101,9 @@ function App() {
           const r = imgData[i * 4];
           const g = imgData[i * 4 + 1];
           const b = imgData[i * 4 + 2];
+          const a = imgData[i * 4 + 3];
+          if (a > 128) {
+            newFrame[i] = '#' + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+          }
+        }
+        commitFrame(newFrame);
