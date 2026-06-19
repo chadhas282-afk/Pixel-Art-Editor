@@ -29,3 +29,9 @@ export function createEmptyFrame(gridSize = DEFAULT_GRID_SIZE) {
 
 const TOOL_KEYS = {
   p: 'pencil', e: 'eraser', g: 'fill', i: 'eyedropper',
+  l: 'line', r: 'rectangle', o: 'ellipse', a: 'spray',
+  d: 'dither', s: 'select',
+};
+
+function App() {
+  const { addToast } = useToast();
