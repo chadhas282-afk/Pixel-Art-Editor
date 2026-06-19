@@ -119,3 +119,7 @@ function App() {
       return [c, ...filtered].slice(0, 16);
     });
   }, []);
+  useEffect(() => {
+    setHistory(historyRef.current.history);
+    setHistoryIndex(historyRef.current.index);
+  }, [frames]); 
