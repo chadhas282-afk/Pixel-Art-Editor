@@ -127,3 +127,6 @@ function App() {
     const { history: h, index } = historyRef.current;
     const nextH = [...h.slice(0, index + 1), newFrames].slice(-MAX_HISTORY);
     historyRef.current = { history: nextH, index: nextH.length - 1 };
+        setHistory(nextH);
+    setHistoryIndex(nextH.length - 1);
+  }, []);
