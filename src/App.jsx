@@ -19,3 +19,13 @@ const DEFAULT_PALETTE = [
   '#1a1a2e', '#16213e', '#0f3460', '#533483',
   '#e94560', '#ff6b6b', '#ffd93d', '#6bcb77',
   '#4d96ff', '#00d4ff', '#ffffff', '#c8c8d4',
+  '#8b85ff', '#f72585', '#7209b7', '#3a0ca3',
+  '#ff9f1c', '#2ec4b6', '#e71d36', '#011627',
+];
+
+export function createEmptyFrame(gridSize = DEFAULT_GRID_SIZE) {
+  return new Array(gridSize * gridSize).fill(null);
+}
+
+const TOOL_KEYS = {
+  p: 'pencil', e: 'eraser', g: 'fill', i: 'eyedropper',
