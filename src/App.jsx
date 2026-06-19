@@ -113,3 +113,9 @@ function App() {
     };
     reader.readAsDataURL(file);
   };
+  const addRecentColor = useCallback((c) => {
+    setRecentColors(prev => {
+      const filtered = prev.filter(x => x !== c);
+      return [c, ...filtered].slice(0, 16);
+    });
+  }, []);
