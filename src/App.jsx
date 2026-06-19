@@ -54,3 +54,10 @@ function App() {
   const [showGrid,      setShowGrid]      = useState(true);
   const [onionSkinning, setOnionSkinning] = useState(false);
   const [onionOpacity,  setOnionOpacity]  = useState(0.3);
+  const [onionNext,     setOnionNext]     = useState(false);
+  const [hoverCell, setHoverCell] = useState(null);
+  const [zoom, setZoom] = useState(1);
+  const [isExportModalOpen, setIsExportModalOpen] = useState(false);
+  const [clipboard,      setClipboard]      = useState(null);
+  const [showShortcuts,  setShowShortcuts]  = useState(false);
+  const { saveNow, clearSave } = useAutoSave(
