@@ -78,3 +78,14 @@ function App() {
       addToast('Restored previous session', 'info');
     }, [addToast])
   );
+
+  const handleDragOver = (e) => e.preventDefault();
+  const handleDrop = (e) => {
+    e.preventDefault();
+    const file = e.dataTransfer.files[0];
+    if (!file || !file.type.startsWith('image/')) return;
+    
+    const reader = new FileReader();
+    reader.onload = (ev) => {
+      const img = new Image();
+      img.onload = () => {
