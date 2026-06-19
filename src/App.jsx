@@ -89,3 +89,9 @@ function App() {
     reader.onload = (ev) => {
       const img = new Image();
       img.onload = () => {
+        const tmp = document.createElement('canvas');
+        tmp.width = gridSize;
+        tmp.height = gridSize;
+        const ctx = tmp.getContext('2d');
+        ctx.drawImage(img, 0, 0, gridSize, gridSize);
+        const imgData = ctx.getImageData(0, 0, gridSize, gridSize).data;
