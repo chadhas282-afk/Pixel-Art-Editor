@@ -61,3 +61,10 @@ function App() {
   const [clipboard,      setClipboard]      = useState(null);
   const [showShortcuts,  setShowShortcuts]  = useState(false);
   const { saveNow, clearSave } = useAutoSave(
+    { projectName, frames, gridSize, fps, palette, selectedColor, selectedTool },
+    useCallback((saved) => {
+      if (saved.frames) setFrames(saved.frames);
+      if (saved.gridSize) setGridSize(saved.gridSize);
+      if (saved.fps) setFps(saved.fps);
+      if (saved.palette) setPalette(saved.palette);
+      if (saved.projectName) setProjectName(saved.projectName);
