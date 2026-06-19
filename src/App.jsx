@@ -48,3 +48,9 @@ function App() {
   const [palette,  setPalette]  = useState(DEFAULT_PALETTE);
   const [recentColors, setRecentColors] = useState([]);
   const [brushSize,     setBrushSize]     = useState(1);
+  const [symmetryMode,  setSymmetryMode]  = useState('none');
+  const [fps,       setFps]       = useState(8);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [showGrid,      setShowGrid]      = useState(true);
+  const [onionSkinning, setOnionSkinning] = useState(false);
+  const [onionOpacity,  setOnionOpacity]  = useState(0.3);
