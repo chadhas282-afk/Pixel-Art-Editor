@@ -197,3 +197,13 @@ function App() {
       setCFI(Math.max(0, currentFrameIndex - 1));
     }
   };
+
+  const moveFrame = (index, targetIndex) => {
+    if (targetIndex < 0 || targetIndex >= frames.length) return;
+    setFrames(prev => {
+      const next = [...prev];
+      const tmp = next[index];
+      next[index] = next[targetIndex];
+      next[targetIndex] = tmp;
+      pushHistory(next);
+      return next;
