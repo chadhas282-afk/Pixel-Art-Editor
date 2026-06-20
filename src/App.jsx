@@ -185,3 +185,9 @@ function App() {
     });
     setCFI(frames.length);
   };
+
+  const deleteFrame = (index) => {
+    if (frames.length <= 1) return;
+    setFrames(prev => {
+      const next = prev.filter((_, i) => i !== index);
+      pushHistory(next);
