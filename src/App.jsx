@@ -207,3 +207,11 @@ function App() {
       next[targetIndex] = tmp;
       pushHistory(next);
       return next;
+          });
+    if (currentFrameIndex === index) setCFI(targetIndex);
+    else if (currentFrameIndex === targetIndex) setCFI(index);
+  };
+
+  const clearCanvas = () => {
+    commitFrame(createEmptyFrame(gridSize));
+  };
