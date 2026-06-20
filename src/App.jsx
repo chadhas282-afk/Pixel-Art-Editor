@@ -252,3 +252,13 @@ function App() {
           commitFrame(clipboard);
           addToast('Frame pasted', 'info', 1500);
         }
+                if (e.key.toLowerCase() === 'a') {
+          e.preventDefault();
+          setSelectedTool('select');
+        }
+        if (e.key.toLowerCase() === 'e') {
+          e.preventDefault();
+          setIsExportModalOpen(true);
+        }
+        return;
+      }
