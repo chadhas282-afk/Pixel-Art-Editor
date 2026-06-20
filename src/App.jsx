@@ -262,3 +262,9 @@ function App() {
         }
         return;
       }
+
+      const key = e.key.toLowerCase();
+      if (TOOL_KEYS[key]) setSelectedTool(TOOL_KEYS[key]);
+      if (e.key === 'ArrowLeft') setCFI(c => Math.max(0, c - 1));
+      if (e.key === 'ArrowRight') setCFI(c => Math.min(frames.length - 1, c + 1));
+      if (e.key === 'Delete' || e.key === 'Backspace') clearCanvas();
