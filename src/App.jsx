@@ -147,3 +147,13 @@ function App() {
       setFrames(h[index + 1]);
     }
   }, [addToast]);
+
+  const canUndo = historyIndex > 0;
+  const canRedo = historyIndex < history.length - 1;
+
+  const commitFrame = useCallback((newFrame) => {
+    setFrames(prev => {
+      const next = [...prev];
+      next[currentFrameIndex] = newFrame;
+      pushHistory(next);
+      return next;
