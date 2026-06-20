@@ -252,7 +252,7 @@ function App() {
           commitFrame(clipboard);
           addToast('Frame pasted', 'info', 1500);
         }
-                if (e.key.toLowerCase() === 'a') {
+        if (e.key.toLowerCase() === 'a') {
           e.preventDefault();
           setSelectedTool('select');
         }
@@ -268,3 +268,9 @@ function App() {
       if (e.key === 'ArrowLeft') setCFI(c => Math.max(0, c - 1));
       if (e.key === 'ArrowRight') setCFI(c => Math.min(frames.length - 1, c + 1));
       if (e.key === 'Delete' || e.key === 'Backspace') clearCanvas();
+      if (['1', '2', '3', '4'].includes(e.key)) setBrushSize(parseInt(e.key));
+      if (e.key === 'f') flipH();
+      if (e.key === 'v') flipV();
+      if (e.key === 'g') setShowGrid(g => !g);
+      if (e.key === 'o') setOnionSkinning(o => !o);
+    };
