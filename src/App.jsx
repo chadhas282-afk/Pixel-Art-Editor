@@ -242,3 +242,8 @@ function App() {
           e.preventDefault();
           if (e.shiftKey) redo(); else undo();
         }
+                if (e.key.toLowerCase() === 'c') {
+          e.preventDefault();
+          setClipboard(frames[currentFrameIndex]);
+          addToast('Frame copied', 'info', 1500);
+        }
