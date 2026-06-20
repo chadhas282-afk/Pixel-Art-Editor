@@ -236,3 +236,9 @@ function App() {
       if (e.key === '?') { setShowShortcuts(prev => !prev); return; }
 
       const ctrlOrCmd = e.ctrlKey || e.metaKey;
+
+      if (ctrlOrCmd) {
+        if (e.key.toLowerCase() === 'z') {
+          e.preventDefault();
+          if (e.shiftKey) redo(); else undo();
+        }
