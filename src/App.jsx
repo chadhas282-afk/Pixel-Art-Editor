@@ -191,3 +191,9 @@ function App() {
     setFrames(prev => {
       const next = prev.filter((_, i) => i !== index);
       pushHistory(next);
+            return next;
+    });
+    if (currentFrameIndex >= index) {
+      setCFI(Math.max(0, currentFrameIndex - 1));
+    }
+  };
