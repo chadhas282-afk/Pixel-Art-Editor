@@ -178,3 +178,10 @@ function App() {
   };
 
   const addBlankFrame = () => {
+        setFrames(prev => {
+      const next = [...prev, createEmptyFrame(gridSize)];
+      pushHistory(next);
+      return next;
+    });
+    setCFI(frames.length);
+  };
