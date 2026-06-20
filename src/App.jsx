@@ -222,3 +222,9 @@ function App() {
     const newFrames = [createEmptyFrame(newSize)];
     setFrames(newFrames);
     setCFI(0);
+        pushHistory(newFrames);
+    addToast(`Grid resized to ${newSize}x${newSize}`, 'info');
+  };
+
+  const flipH = () => commitFrame(flipFrameH(frames[currentFrameIndex], gridSize));
+  const flipV = () => commitFrame(flipFrameV(frames[currentFrameIndex], gridSize));
