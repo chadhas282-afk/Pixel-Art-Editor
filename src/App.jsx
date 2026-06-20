@@ -138,3 +138,12 @@ function App() {
       setFrames(h[index - 1]);
       if (currentFrameIndex >= h[index - 1].length) setCFI(Math.max(0, h[index - 1].length - 1));
     }
+      }, [currentFrameIndex, addToast]);
+
+  const redo = useCallback(() => {
+    const { history: h, index } = historyRef.current;
+    if (index < h.length - 1) {
+      historyRef.current = { history: h, index: index + 1 };
+      setFrames(h[index + 1]);
+    }
+  }, [addToast]);
