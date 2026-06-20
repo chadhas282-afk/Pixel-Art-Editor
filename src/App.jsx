@@ -228,3 +228,11 @@ function App() {
 
   const flipH = () => commitFrame(flipFrameH(frames[currentFrameIndex], gridSize));
   const flipV = () => commitFrame(flipFrameV(frames[currentFrameIndex], gridSize));
+
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.target.tagName.toLowerCase() === 'input' || e.target.tagName.toLowerCase() === 'textarea') return;
+
+      if (e.key === '?') { setShowShortcuts(prev => !prev); return; }
+
+      const ctrlOrCmd = e.ctrlKey || e.metaKey;
