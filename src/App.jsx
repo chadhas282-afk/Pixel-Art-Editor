@@ -130,3 +130,11 @@ function App() {
         setHistory(nextH);
     setHistoryIndex(nextH.length - 1);
   }, []);
+
+    const undo = useCallback(() => {
+    const { history: h, index } = historyRef.current;
+    if (index > 0) {
+      historyRef.current = { history: h, index: index - 1 };
+      setFrames(h[index - 1]);
+      if (currentFrameIndex >= h[index - 1].length) setCFI(Math.max(0, h[index - 1].length - 1));
+    }
