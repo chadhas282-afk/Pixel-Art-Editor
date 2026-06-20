@@ -37,29 +37,29 @@ function App() {
   const { addToast } = useToast();
 
   const [projectName, setProjectName] = useState('Untitled Project');
-  const [gridSize, setGridSize]   = useState(DEFAULT_GRID_SIZE);
-  const [frames, setFrames]       = useState([createEmptyFrame(DEFAULT_GRID_SIZE)]);
+  const [gridSize, setGridSize] = useState(DEFAULT_GRID_SIZE);
+  const [frames, setFrames] = useState([createEmptyFrame(DEFAULT_GRID_SIZE)]);
   const [currentFrameIndex, setCFI] = useState(0);
-  const [history, setHistory]         = useState([[createEmptyFrame(DEFAULT_GRID_SIZE)]]);
+  const [history, setHistory] = useState([[createEmptyFrame(DEFAULT_GRID_SIZE)]]);
   const [historyIndex, setHistoryIndex] = useState(0);
   const historyRef = useRef({ history: [[createEmptyFrame(DEFAULT_GRID_SIZE)]], index: 0 });
-  const [selectedTool,  setSelectedTool]  = useState('pencil');
+  const [selectedTool, setSelectedTool] = useState('pencil');
   const [selectedColor, setSelectedColor] = useState('#ffffff');
-  const [palette,  setPalette]  = useState(DEFAULT_PALETTE);
+  const [palette, setPalette] = useState(DEFAULT_PALETTE);
   const [recentColors, setRecentColors] = useState([]);
-  const [brushSize,     setBrushSize]     = useState(1);
-  const [symmetryMode,  setSymmetryMode]  = useState('none');
-  const [fps,       setFps]       = useState(8);
+  const [brushSize, setBrushSize] = useState(1);
+  const [symmetryMode, setSymmetryMode] = useState('none');
+  const [fps, setFps] = useState(8);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [showGrid,      setShowGrid]      = useState(true);
+  const [showGrid, setShowGrid] = useState(true);
   const [onionSkinning, setOnionSkinning] = useState(false);
-  const [onionOpacity,  setOnionOpacity]  = useState(0.3);
-  const [onionNext,     setOnionNext]     = useState(false);
+  const [onionOpacity, setOnionOpacity] = useState(0.3);
+  const [onionNext, setOnionNext] = useState(false);
   const [hoverCell, setHoverCell] = useState(null);
   const [zoom, setZoom] = useState(1);
   const [isExportModalOpen, setIsExportModalOpen] = useState(false);
-  const [clipboard,      setClipboard]      = useState(null);
-  const [showShortcuts,  setShowShortcuts]  = useState(false);
+  const [clipboard, setClipboard] = useState(null);
+  const [showShortcuts, setShowShortcuts] = useState(false);
   const { saveNow, clearSave } = useAutoSave(
     { projectName, frames, gridSize, fps, palette, selectedColor, selectedTool },
     useCallback((saved) => {
@@ -70,11 +70,11 @@ function App() {
       if (saved.projectName) setProjectName(saved.projectName);
       if (saved.selectedColor) setSelectedColor(saved.selectedColor);
       if (saved.selectedTool) setSelectedTool(saved.selectedTool);
-      
+
       setHistory([saved.frames]);
       setHistoryIndex(0);
       historyRef.current = { history: [saved.frames], index: 0 };
-      
+
       addToast('Restored previous session', 'info');
     }, [addToast])
   );
@@ -84,7 +84,7 @@ function App() {
     e.preventDefault();
     const file = e.dataTransfer.files[0];
     if (!file || !file.type.startsWith('image/')) return;
-    
+
     const reader = new FileReader();
     reader.onload = (ev) => {
       const img = new Image();
@@ -95,7 +95,7 @@ function App() {
         const ctx = tmp.getContext('2d');
         ctx.drawImage(img, 0, 0, gridSize, gridSize);
         const imgData = ctx.getImageData(0, 0, gridSize, gridSize).data;
-              
+
         const newFrame = new Array(gridSize * gridSize).fill(null);
         for (let i = 0; i < gridSize * gridSize; i++) {
           const r = imgData[i * 4];
@@ -122,23 +122,23 @@ function App() {
   useEffect(() => {
     setHistory(historyRef.current.history);
     setHistoryIndex(historyRef.current.index);
-  }, [frames]); 
-    const pushHistory = useCallback((newFrames) => {
+  }, [frames]);
+  const pushHistory = useCallback((newFrames) => {
     const { history: h, index } = historyRef.current;
     const nextH = [...h.slice(0, index + 1), newFrames].slice(-MAX_HISTORY);
     historyRef.current = { history: nextH, index: nextH.length - 1 };
-        setHistory(nextH);
+    setHistory(nextH);
     setHistoryIndex(nextH.length - 1);
   }, []);
 
-    const undo = useCallback(() => {
+  const undo = useCallback(() => {
     const { history: h, index } = historyRef.current;
     if (index > 0) {
       historyRef.current = { history: h, index: index - 1 };
       setFrames(h[index - 1]);
       if (currentFrameIndex >= h[index - 1].length) setCFI(Math.max(0, h[index - 1].length - 1));
     }
-      }, [currentFrameIndex, addToast]);
+  }, [currentFrameIndex, addToast]);
 
   const redo = useCallback(() => {
     const { history: h, index } = historyRef.current;
@@ -157,9 +157,17 @@ function App() {
       next[currentFrameIndex] = newFrame;
       pushHistory(next);
       return next;
-          });
+    });
   }, [currentFrameIndex, pushHistory]);
 
   const paintFrame = useCallback((newFrame) => {
     setFrames(prev => {
       const next = [...prev];
+      next[currentFrameIndex] = newFrame;
+      return next;
+    });
+  }, [currentFrameIndex]);
+
+  const addFrame = () => {
+    setFrames(prev => {
+      const next = [...prev, [...prev[currentFrameIndex]]];
