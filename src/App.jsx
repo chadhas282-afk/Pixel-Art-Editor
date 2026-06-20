@@ -157,3 +157,9 @@ function App() {
       next[currentFrameIndex] = newFrame;
       pushHistory(next);
       return next;
+          });
+  }, [currentFrameIndex, pushHistory]);
+
+  const paintFrame = useCallback((newFrame) => {
+    setFrames(prev => {
+      const next = [...prev];
