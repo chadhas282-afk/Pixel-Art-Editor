@@ -215,3 +215,10 @@ function App() {
   const clearCanvas = () => {
     commitFrame(createEmptyFrame(gridSize));
   };
+
+  const handleGridSizeChange = (newSize) => {
+    if (newSize === gridSize) return;
+    setGridSize(newSize);
+    const newFrames = [createEmptyFrame(newSize)];
+    setFrames(newFrames);
+    setCFI(0);
