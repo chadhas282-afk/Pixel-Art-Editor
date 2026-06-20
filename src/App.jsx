@@ -171,3 +171,10 @@ function App() {
   const addFrame = () => {
     setFrames(prev => {
       const next = [...prev, [...prev[currentFrameIndex]]];
+            pushHistory(next);
+      return next;
+    });
+    setCFI(frames.length);
+  };
+
+  const addBlankFrame = () => {
