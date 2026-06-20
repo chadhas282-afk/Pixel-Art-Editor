@@ -274,3 +274,6 @@ function App() {
       if (e.key === 'g') setShowGrid(g => !g);
       if (e.key === 'o') setOnionSkinning(o => !o);
     };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [undo, redo, clipboard, currentFrameIndex, frames, gridSize, commitFrame, addToast]);
