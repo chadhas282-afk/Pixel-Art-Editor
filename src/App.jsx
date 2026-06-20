@@ -171,14 +171,14 @@ function App() {
   const addFrame = () => {
     setFrames(prev => {
       const next = [...prev, [...prev[currentFrameIndex]]];
-            pushHistory(next);
+      pushHistory(next);
       return next;
     });
     setCFI(frames.length);
   };
 
   const addBlankFrame = () => {
-        setFrames(prev => {
+    setFrames(prev => {
       const next = [...prev, createEmptyFrame(gridSize)];
       pushHistory(next);
       return next;
@@ -191,7 +191,7 @@ function App() {
     setFrames(prev => {
       const next = prev.filter((_, i) => i !== index);
       pushHistory(next);
-            return next;
+      return next;
     });
     if (currentFrameIndex >= index) {
       setCFI(Math.max(0, currentFrameIndex - 1));
@@ -207,7 +207,7 @@ function App() {
       next[targetIndex] = tmp;
       pushHistory(next);
       return next;
-          });
+    });
     if (currentFrameIndex === index) setCFI(targetIndex);
     else if (currentFrameIndex === targetIndex) setCFI(index);
   };
@@ -222,7 +222,7 @@ function App() {
     const newFrames = [createEmptyFrame(newSize)];
     setFrames(newFrames);
     setCFI(0);
-        pushHistory(newFrames);
+    pushHistory(newFrames);
     addToast(`Grid resized to ${newSize}x${newSize}`, 'info');
   };
 
@@ -242,8 +242,13 @@ function App() {
           e.preventDefault();
           if (e.shiftKey) redo(); else undo();
         }
-                if (e.key.toLowerCase() === 'c') {
+        if (e.key.toLowerCase() === 'c') {
           e.preventDefault();
           setClipboard(frames[currentFrameIndex]);
           addToast('Frame copied', 'info', 1500);
+        }
+        if (e.key.toLowerCase() === 'v' && clipboard) {
+          e.preventDefault();
+          commitFrame(clipboard);
+          addToast('Frame pasted', 'info', 1500);
         }
