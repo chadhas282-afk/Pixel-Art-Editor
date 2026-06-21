@@ -292,3 +292,13 @@ function App() {
         onExportSpritesheet={(scale, bg) => exportSpritesheet(frames, gridSize, scale, bg)}
         onExportAllFrames={(scale, bg) => exportAllFrames(frames, gridSize, scale, bg)}
         onExportGIF={async (scale, bg) => {
+                    const { downloadGIF } = await import('./utils/gifExport');
+          downloadGIF(frames, gridSize, fps, scale, bg, `${projectName.replace(/\s+/g, '-').toLowerCase()}.gif`);
+        }}
+        onExportJSON={() => exportJSON(frames, gridSize, fps, projectName, palette)}
+      />
+      <header className="app-header">
+        <div className="app-logo">
+          <div className="app-logo-icon">🎨</div>
+          <span>PixelForge</span>
+        </div>
