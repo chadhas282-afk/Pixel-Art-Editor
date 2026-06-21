@@ -308,3 +308,11 @@ function App() {
           value={projectName} 
           onChange={(e) => setProjectName(e.target.value)}
           style={{
+                        background: 'transparent', border: '1px solid transparent', color: 'var(--text-primary)',
+            fontSize: '13px', fontWeight: '500', marginLeft: '24px', padding: '4px 8px', borderRadius: '4px',
+            outline: 'none', transition: 'all 0.2s'
+          }}
+          onFocus={e => e.target.style.background = 'var(--bg-elevated)'}
+          onBlur={e => e.target.style.background = 'transparent'}
+        />
+        
