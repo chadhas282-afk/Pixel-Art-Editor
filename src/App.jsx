@@ -323,3 +323,9 @@ function App() {
           <button className="header-btn header-btn--accent" onClick={() => setShowShortcuts(true)}>⌨ Shortcuts</button>
           <button className="header-btn" style={{ background: 'var(--accent)', color: '#fff', border: 'none' }} onClick={() => setIsExportModalOpen(true)}>📤 Export</button>
         </div>
+              </header>
+      <Sidebar
+        selectedTool={selectedTool}   setSelectedTool={setSelectedTool}
+        selectedColor={selectedColor} setSelectedColor={setSelectedColor}
+        palette={palette}    setPalette={setPalette}
+        recentColors={recentColors}
