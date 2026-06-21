@@ -302,3 +302,9 @@ function App() {
           <div className="app-logo-icon">🎨</div>
           <span>PixelForge</span>
         </div>
+                
+        <input 
+          type="text" 
+          value={projectName} 
+          onChange={(e) => setProjectName(e.target.value)}
+          style={{
