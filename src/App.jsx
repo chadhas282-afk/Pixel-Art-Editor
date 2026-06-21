@@ -376,8 +376,16 @@ function App() {
         selectedTool={selectedTool}
         selectedColor={selectedColor}
         brushSize={brushSize}
-                hoverCell={hoverCell}
+        hoverCell={hoverCell}
         zoom={zoom}
         undoCount={historyIndex}
         redoCount={history.length - 1 - historyIndex}
         currentFrameIndex={currentFrameIndex}
+        totalFrames={frames.length}
+        gridSize={gridSize}
+      />
+    </div>
+  );
+}
+
+export default App;
