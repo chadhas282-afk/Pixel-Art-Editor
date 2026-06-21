@@ -348,3 +348,7 @@ function App() {
         showGrid={showGrid}   setShowGrid={setShowGrid}
         brushSize={brushSize}
         symmetryMode={symmetryMode}
+                onionSkinning={onionSkinning}
+        onionOpacity={onionOpacity}
+        onionNext={onionNext}
+        addRecentColor={addRecentColor}
