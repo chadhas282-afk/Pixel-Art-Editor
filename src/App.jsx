@@ -358,3 +358,10 @@ function App() {
       />
       <Timeline
         frames={frames}
+                currentFrameIndex={currentFrameIndex}
+        setCurrentFrameIndex={setCFI}
+        addFrame={addFrame}
+        addBlankFrame={addBlankFrame}
+        deleteFrame={deleteFrame}
+        moveFrame={moveFrame}
+        fps={fps}   setFps={setFps}
