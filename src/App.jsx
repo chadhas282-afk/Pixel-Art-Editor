@@ -277,3 +277,11 @@ function App() {
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [undo, redo, clipboard, currentFrameIndex, frames, gridSize, commitFrame, addToast]);
+
+    return (
+    <div className="app-container" onDragOver={handleDragOver} onDrop={handleDrop}>
+      {showShortcuts && <KeyboardShortcutsOverlay onClose={() => setShowShortcuts(false)} />}
+      
+      <ExportModal
+        isOpen={isExportModalOpen}
+        onClose={() => setIsExportModalOpen(false)}
