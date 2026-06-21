@@ -278,21 +278,21 @@ function App() {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [undo, redo, clipboard, currentFrameIndex, frames, gridSize, commitFrame, addToast]);
 
-    return (
+  return (
     <div className="app-container" onDragOver={handleDragOver} onDrop={handleDrop}>
       {showShortcuts && <KeyboardShortcutsOverlay onClose={() => setShowShortcuts(false)} />}
-      
+
       <ExportModal
         isOpen={isExportModalOpen}
         onClose={() => setIsExportModalOpen(false)}
-                gridSize={gridSize}
+        gridSize={gridSize}
         frames={frames}
         currentFrameIndex={currentFrameIndex}
         onExportPNG={(scale, bg) => exportFramePNG(frames, currentFrameIndex, gridSize, scale, bg)}
         onExportSpritesheet={(scale, bg) => exportSpritesheet(frames, gridSize, scale, bg)}
         onExportAllFrames={(scale, bg) => exportAllFrames(frames, gridSize, scale, bg)}
         onExportGIF={async (scale, bg) => {
-                    const { downloadGIF } = await import('./utils/gifExport');
+          const { downloadGIF } = await import('./utils/gifExport');
           downloadGIF(frames, gridSize, fps, scale, bg, `${projectName.replace(/\s+/g, '-').toLowerCase()}.gif`);
         }}
         onExportJSON={() => exportJSON(frames, gridSize, fps, projectName, palette)}
@@ -302,20 +302,20 @@ function App() {
           <div className="app-logo-icon">🎨</div>
           <span>PixelForge</span>
         </div>
-                
-        <input 
-          type="text" 
-          value={projectName} 
+
+        <input
+          type="text"
+          value={projectName}
           onChange={(e) => setProjectName(e.target.value)}
           style={{
-                        background: 'transparent', border: '1px solid transparent', color: 'var(--text-primary)',
+            background: 'transparent', border: '1px solid transparent', color: 'var(--text-primary)',
             fontSize: '13px', fontWeight: '500', marginLeft: '24px', padding: '4px 8px', borderRadius: '4px',
             outline: 'none', transition: 'all 0.2s'
           }}
           onFocus={e => e.target.style.background = 'var(--bg-elevated)'}
           onBlur={e => e.target.style.background = 'transparent'}
         />
-                <div className="header-divider" />
+        <div className="header-divider" />
         <div className="header-spacer" />
         <div className="header-actions">
           <button className="header-btn" onClick={flipH} data-tooltip="Flip Horizontal (F)">↔ Flip H</button>
@@ -323,16 +323,22 @@ function App() {
           <button className="header-btn header-btn--accent" onClick={() => setShowShortcuts(true)}>⌨ Shortcuts</button>
           <button className="header-btn" style={{ background: 'var(--accent)', color: '#fff', border: 'none' }} onClick={() => setIsExportModalOpen(true)}>📤 Export</button>
         </div>
-              </header>
+      </header>
       <Sidebar
-        selectedTool={selectedTool}   setSelectedTool={setSelectedTool}
+        selectedTool={selectedTool} setSelectedTool={setSelectedTool}
         selectedColor={selectedColor} setSelectedColor={setSelectedColor}
-        palette={palette}    setPalette={setPalette}
+        palette={palette} setPalette={setPalette}
         recentColors={recentColors}
-                undo={undo} redo={redo} canUndo={canUndo} canRedo={canRedo}
+        undo={undo} redo={redo} canUndo={canUndo} canRedo={canRedo}
         clearCanvas={clearCanvas}
-        brushSize={brushSize}    setBrushSize={setBrushSize}
+        brushSize={brushSize} setBrushSize={setBrushSize}
         symmetryMode={symmetryMode} setSymmetryMode={setSymmetryMode}
-        gridSize={gridSize}     onGridSizeChange={handleGridSizeChange}
+        gridSize={gridSize} onGridSizeChange={handleGridSizeChange}
       />
       <CanvasArea
+        frame={frames[currentFrameIndex]}
+        frames={frames}
+        currentFrameIndex={currentFrameIndex}
+        paintFrame={paintFrame}
+        commitFrame={commitFrame}
+        selectedTool={selectedTool}
