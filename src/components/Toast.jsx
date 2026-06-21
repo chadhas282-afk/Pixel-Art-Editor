@@ -9,3 +9,9 @@ export const ToastProvider = ({ children }) => {
     const id = Date.now().toString() + Math.random().toString(36).substring(2, 9);
     setToasts(prev => [...prev, { id, message, type }]);
     
+        if (duration > 0) {
+      setTimeout(() => {
+        removeToast(id);
+      }, duration);
+    }
+  }, []);
