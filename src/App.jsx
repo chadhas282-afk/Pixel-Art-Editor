@@ -342,30 +342,37 @@ function App() {
         paintFrame={paintFrame}
         commitFrame={commitFrame}
         selectedTool={selectedTool}
-                selectedColor={selectedColor}
+        selectedColor={selectedColor}
         setSelectedColor={setSelectedColor}
         GRID_SIZE={gridSize}
-        showGrid={showGrid}   setShowGrid={setShowGrid}
+        showGrid={showGrid} setShowGrid={setShowGrid}
         brushSize={brushSize}
         symmetryMode={symmetryMode}
-                onionSkinning={onionSkinning}
+        onionSkinning={onionSkinning}
         onionOpacity={onionOpacity}
         onionNext={onionNext}
         addRecentColor={addRecentColor}
-                clipboard={clipboard} setClipboard={setClipboard}
+        clipboard={clipboard} setClipboard={setClipboard}
         onHoverCellChange={setHoverCell}
         onZoomChange={setZoom}
       />
       <Timeline
         frames={frames}
-                currentFrameIndex={currentFrameIndex}
+        currentFrameIndex={currentFrameIndex}
         setCurrentFrameIndex={setCFI}
         addFrame={addFrame}
         addBlankFrame={addBlankFrame}
         deleteFrame={deleteFrame}
         moveFrame={moveFrame}
-        fps={fps}   setFps={setFps}
-                isPlaying={isPlaying} setIsPlaying={setIsPlaying}
+        fps={fps} setFps={setFps}
+        isPlaying={isPlaying} setIsPlaying={setIsPlaying}
         GRID_SIZE={gridSize}
         onionSkinning={onionSkinning} setOnionSkinning={setOnionSkinning}
-        onionOpacity={onionOpacity}   setOnionOpacity={setOnionOpacity}
+        onionOpacity={onionOpacity} setOnionOpacity={setOnionOpacity}
+        onionNext={onionNext} setOnionNext={setOnionNext}
+        onOpenExportModal={() => setIsExportModalOpen(true)}
+      />
+      <StatusBar
+        selectedTool={selectedTool}
+        selectedColor={selectedColor}
+        brushSize={brushSize}
