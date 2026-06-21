@@ -352,3 +352,9 @@ function App() {
         onionOpacity={onionOpacity}
         onionNext={onionNext}
         addRecentColor={addRecentColor}
+                clipboard={clipboard} setClipboard={setClipboard}
+        onHoverCellChange={setHoverCell}
+        onZoomChange={setZoom}
+      />
+      <Timeline
+        frames={frames}
