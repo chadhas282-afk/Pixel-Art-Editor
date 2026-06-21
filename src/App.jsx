@@ -315,4 +315,11 @@ function App() {
           onFocus={e => e.target.style.background = 'var(--bg-elevated)'}
           onBlur={e => e.target.style.background = 'transparent'}
         />
-        
+                <div className="header-divider" />
+        <div className="header-spacer" />
+        <div className="header-actions">
+          <button className="header-btn" onClick={flipH} data-tooltip="Flip Horizontal (F)">↔ Flip H</button>
+          <button className="header-btn" onClick={flipV} data-tooltip="Flip Vertical (V)">↕ Flip V</button>
+          <button className="header-btn header-btn--accent" onClick={() => setShowShortcuts(true)}>⌨ Shortcuts</button>
+          <button className="header-btn" style={{ background: 'var(--accent)', color: '#fff', border: 'none' }} onClick={() => setIsExportModalOpen(true)}>📤 Export</button>
+        </div>
