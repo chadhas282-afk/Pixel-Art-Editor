@@ -365,3 +365,7 @@ function App() {
         deleteFrame={deleteFrame}
         moveFrame={moveFrame}
         fps={fps}   setFps={setFps}
+                isPlaying={isPlaying} setIsPlaying={setIsPlaying}
+        GRID_SIZE={gridSize}
+        onionSkinning={onionSkinning} setOnionSkinning={setOnionSkinning}
+        onionOpacity={onionOpacity}   setOnionOpacity={setOnionOpacity}
