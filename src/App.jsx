@@ -37,29 +37,29 @@ function App() {
   const { addToast } = useToast();
 
   const [projectName, setProjectName] = useState('Untitled Project');
-  const [gridSize, setGridSize] = useState(DEFAULT_GRID_SIZE);
-  const [frames, setFrames] = useState([createEmptyFrame(DEFAULT_GRID_SIZE)]);
+  const [gridSize, setGridSize]   = useState(DEFAULT_GRID_SIZE);
+  const [frames, setFrames]       = useState([createEmptyFrame(DEFAULT_GRID_SIZE)]);
   const [currentFrameIndex, setCFI] = useState(0);
-  const [history, setHistory] = useState([[createEmptyFrame(DEFAULT_GRID_SIZE)]]);
+  const [history, setHistory]         = useState([[createEmptyFrame(DEFAULT_GRID_SIZE)]]);
   const [historyIndex, setHistoryIndex] = useState(0);
   const historyRef = useRef({ history: [[createEmptyFrame(DEFAULT_GRID_SIZE)]], index: 0 });
-  const [selectedTool, setSelectedTool] = useState('pencil');
+  const [selectedTool,  setSelectedTool]  = useState('pencil');
   const [selectedColor, setSelectedColor] = useState('#ffffff');
-  const [palette, setPalette] = useState(DEFAULT_PALETTE);
+  const [palette,  setPalette]  = useState(DEFAULT_PALETTE);
   const [recentColors, setRecentColors] = useState([]);
-  const [brushSize, setBrushSize] = useState(1);
-  const [symmetryMode, setSymmetryMode] = useState('none');
-  const [fps, setFps] = useState(8);
+  const [brushSize,     setBrushSize]     = useState(1);
+  const [symmetryMode,  setSymmetryMode]  = useState('none');
+  const [fps,       setFps]       = useState(8);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [showGrid, setShowGrid] = useState(true);
+  const [showGrid,      setShowGrid]      = useState(true);
   const [onionSkinning, setOnionSkinning] = useState(false);
-  const [onionOpacity, setOnionOpacity] = useState(0.3);
-  const [onionNext, setOnionNext] = useState(false);
+  const [onionOpacity,  setOnionOpacity]  = useState(0.3);
+  const [onionNext,     setOnionNext]     = useState(false);
   const [hoverCell, setHoverCell] = useState(null);
   const [zoom, setZoom] = useState(1);
   const [isExportModalOpen, setIsExportModalOpen] = useState(false);
-  const [clipboard, setClipboard] = useState(null);
-  const [showShortcuts, setShowShortcuts] = useState(false);
+  const [clipboard,      setClipboard]      = useState(null);
+  const [showShortcuts,  setShowShortcuts]  = useState(false);
   const { saveNow, clearSave } = useAutoSave(
     { projectName, frames, gridSize, fps, palette, selectedColor, selectedTool },
     useCallback((saved) => {
@@ -70,11 +70,11 @@ function App() {
       if (saved.projectName) setProjectName(saved.projectName);
       if (saved.selectedColor) setSelectedColor(saved.selectedColor);
       if (saved.selectedTool) setSelectedTool(saved.selectedTool);
-
+      
       setHistory([saved.frames]);
       setHistoryIndex(0);
       historyRef.current = { history: [saved.frames], index: 0 };
-
+      
       addToast('Restored previous session', 'info');
     }, [addToast])
   );
@@ -84,7 +84,7 @@ function App() {
     e.preventDefault();
     const file = e.dataTransfer.files[0];
     if (!file || !file.type.startsWith('image/')) return;
-
+    
     const reader = new FileReader();
     reader.onload = (ev) => {
       const img = new Image();
@@ -95,7 +95,7 @@ function App() {
         const ctx = tmp.getContext('2d');
         ctx.drawImage(img, 0, 0, gridSize, gridSize);
         const imgData = ctx.getImageData(0, 0, gridSize, gridSize).data;
-
+        
         const newFrame = new Array(gridSize * gridSize).fill(null);
         for (let i = 0; i < gridSize * gridSize; i++) {
           const r = imgData[i * 4];
@@ -113,6 +113,7 @@ function App() {
     };
     reader.readAsDataURL(file);
   };
+
   const addRecentColor = useCallback((c) => {
     setRecentColors(prev => {
       const filtered = prev.filter(x => x !== c);
@@ -122,7 +123,7 @@ function App() {
   useEffect(() => {
     setHistory(historyRef.current.history);
     setHistoryIndex(historyRef.current.index);
-  }, [frames]);
+  }, [frames]); 
   const pushHistory = useCallback((newFrames) => {
     const { history: h, index } = historyRef.current;
     const nextH = [...h.slice(0, index + 1), newFrames].slice(-MAX_HISTORY);
@@ -268,7 +269,7 @@ function App() {
       if (e.key === 'ArrowLeft') setCFI(c => Math.max(0, c - 1));
       if (e.key === 'ArrowRight') setCFI(c => Math.min(frames.length - 1, c + 1));
       if (e.key === 'Delete' || e.key === 'Backspace') clearCanvas();
-      if (['1', '2', '3', '4'].includes(e.key)) setBrushSize(parseInt(e.key));
+      if (['1','2','3','4'].includes(e.key)) setBrushSize(parseInt(e.key));
       if (e.key === 'f') flipH();
       if (e.key === 'v') flipV();
       if (e.key === 'g') setShowGrid(g => !g);
@@ -281,7 +282,7 @@ function App() {
   return (
     <div className="app-container" onDragOver={handleDragOver} onDrop={handleDrop}>
       {showShortcuts && <KeyboardShortcutsOverlay onClose={() => setShowShortcuts(false)} />}
-
+      
       <ExportModal
         isOpen={isExportModalOpen}
         onClose={() => setIsExportModalOpen(false)}
@@ -302,10 +303,10 @@ function App() {
           <div className="app-logo-icon">🎨</div>
           <span>PixelForge</span>
         </div>
-
-        <input
-          type="text"
-          value={projectName}
+        
+        <input 
+          type="text" 
+          value={projectName} 
           onChange={(e) => setProjectName(e.target.value)}
           style={{
             background: 'transparent', border: '1px solid transparent', color: 'var(--text-primary)',
@@ -315,6 +316,7 @@ function App() {
           onFocus={e => e.target.style.background = 'var(--bg-elevated)'}
           onBlur={e => e.target.style.background = 'transparent'}
         />
+        
         <div className="header-divider" />
         <div className="header-spacer" />
         <div className="header-actions">
@@ -325,15 +327,15 @@ function App() {
         </div>
       </header>
       <Sidebar
-        selectedTool={selectedTool} setSelectedTool={setSelectedTool}
+        selectedTool={selectedTool}   setSelectedTool={setSelectedTool}
         selectedColor={selectedColor} setSelectedColor={setSelectedColor}
-        palette={palette} setPalette={setPalette}
+        palette={palette}    setPalette={setPalette}
         recentColors={recentColors}
         undo={undo} redo={redo} canUndo={canUndo} canRedo={canRedo}
         clearCanvas={clearCanvas}
-        brushSize={brushSize} setBrushSize={setBrushSize}
+        brushSize={brushSize}    setBrushSize={setBrushSize}
         symmetryMode={symmetryMode} setSymmetryMode={setSymmetryMode}
-        gridSize={gridSize} onGridSizeChange={handleGridSizeChange}
+        gridSize={gridSize}     onGridSizeChange={handleGridSizeChange}
       />
       <CanvasArea
         frame={frames[currentFrameIndex]}
@@ -345,7 +347,7 @@ function App() {
         selectedColor={selectedColor}
         setSelectedColor={setSelectedColor}
         GRID_SIZE={gridSize}
-        showGrid={showGrid} setShowGrid={setShowGrid}
+        showGrid={showGrid}   setShowGrid={setShowGrid}
         brushSize={brushSize}
         symmetryMode={symmetryMode}
         onionSkinning={onionSkinning}
@@ -364,12 +366,12 @@ function App() {
         addBlankFrame={addBlankFrame}
         deleteFrame={deleteFrame}
         moveFrame={moveFrame}
-        fps={fps} setFps={setFps}
+        fps={fps}   setFps={setFps}
         isPlaying={isPlaying} setIsPlaying={setIsPlaying}
         GRID_SIZE={gridSize}
         onionSkinning={onionSkinning} setOnionSkinning={setOnionSkinning}
-        onionOpacity={onionOpacity} setOnionOpacity={setOnionOpacity}
-        onionNext={onionNext} setOnionNext={setOnionNext}
+        onionOpacity={onionOpacity}   setOnionOpacity={setOnionOpacity}
+        onionNext={onionNext}         setOnionNext={setOnionNext}
         onOpenExportModal={() => setIsExportModalOpen(true)}
       />
       <StatusBar
