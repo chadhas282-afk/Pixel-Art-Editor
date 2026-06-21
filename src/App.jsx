@@ -342,3 +342,9 @@ function App() {
         paintFrame={paintFrame}
         commitFrame={commitFrame}
         selectedTool={selectedTool}
+                selectedColor={selectedColor}
+        setSelectedColor={setSelectedColor}
+        GRID_SIZE={gridSize}
+        showGrid={showGrid}   setShowGrid={setShowGrid}
+        brushSize={brushSize}
+        symmetryMode={symmetryMode}
