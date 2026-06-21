@@ -329,3 +329,10 @@ function App() {
         selectedColor={selectedColor} setSelectedColor={setSelectedColor}
         palette={palette}    setPalette={setPalette}
         recentColors={recentColors}
+                undo={undo} redo={redo} canUndo={canUndo} canRedo={canRedo}
+        clearCanvas={clearCanvas}
+        brushSize={brushSize}    setBrushSize={setBrushSize}
+        symmetryMode={symmetryMode} setSymmetryMode={setSymmetryMode}
+        gridSize={gridSize}     onGridSizeChange={handleGridSizeChange}
+      />
+      <CanvasArea
