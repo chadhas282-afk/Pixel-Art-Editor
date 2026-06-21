@@ -285,3 +285,10 @@ function App() {
       <ExportModal
         isOpen={isExportModalOpen}
         onClose={() => setIsExportModalOpen(false)}
+                gridSize={gridSize}
+        frames={frames}
+        currentFrameIndex={currentFrameIndex}
+        onExportPNG={(scale, bg) => exportFramePNG(frames, currentFrameIndex, gridSize, scale, bg)}
+        onExportSpritesheet={(scale, bg) => exportSpritesheet(frames, gridSize, scale, bg)}
+        onExportAllFrames={(scale, bg) => exportAllFrames(frames, gridSize, scale, bg)}
+        onExportGIF={async (scale, bg) => {
