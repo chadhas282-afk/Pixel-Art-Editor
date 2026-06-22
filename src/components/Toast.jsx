@@ -30,3 +30,9 @@ export const ToastProvider = ({ children }) => {
             {toast.type === 'success' && '✓'}
             {toast.type === 'error' && '✕'}
             {toast.type === 'info' && 'ℹ'}
+                        </span>
+            <span className="toast-message">{toast.message}</span>
+            <button className="toast-close" onClick={() => removeToast(toast.id)}>✕</button>
+          </div>
+        ))}
+      </div>
