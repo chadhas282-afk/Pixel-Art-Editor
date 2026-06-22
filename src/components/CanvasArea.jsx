@@ -30,3 +30,9 @@ const CanvasArea = ({
   const [isPanning,    setIsPanning]    = useState(false);
   const [spaceDown,    setSpaceDown]    = useState(false);
   const panStartRef    = useRef(null); 
+    const strokeFrameRef = useRef(null);  
+  const isDrawingRef   = useRef(false);
+
+  const [startCell,     setStartCell]     = useState(null);
+  const [previewPixels, setPreviewPixels] = useState([]);
+  const [hoverCell,     setHoverCell]     = useState(null);
