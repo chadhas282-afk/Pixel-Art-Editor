@@ -36,3 +36,10 @@ const CanvasArea = ({
   const [startCell,     setStartCell]     = useState(null);
   const [previewPixels, setPreviewPixels] = useState([]);
   const [hoverCell,     setHoverCell]     = useState(null);
+
+  const [selection, setSelection] = useState(null);
+  useEffect(() => {
+    if (onHoverCellChange) onHoverCellChange(hoverCell);
+  }, [hoverCell, onHoverCellChange]);
+  useEffect(() => {
+    if (onZoomChange) onZoomChange(zoom);
