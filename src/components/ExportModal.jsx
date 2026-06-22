@@ -84,3 +84,22 @@ const ExportModal = ({
                                         <option value={1}>1x ({gridSize}px)</option>
                                         <option value={2}>2x ({gridSize * 2}px)</option>
                                         <option value={4}>4x ({gridSize * 4}px)</option>
+                                                            <option value={8}>8x ({gridSize * 8}px)</option>
+                    <option value={16}>16x ({gridSize * 16}px)</option>
+                    <option value={32}>32x ({gridSize * 32}px)</option>
+                  </select>
+                </div>
+                
+                <div className="export-field">
+                  <label className="export-label">Background</label>
+                  <select className="export-select" value={bgColor} onChange={e => setBgColor(e.target.value)}>
+                    <option value="transparent">Transparent</option>
+                    <option value="#ffffff">White</option>
+                    <option value="#000000">Black</option>
+                    <option value="custom">Custom Color...</option>
+                  </select>
+                  {bgColor === 'custom' && (
+                    <input 
+                      type="color" 
+                      className="export-color-picker" 
+                      value={customBgColor} 
