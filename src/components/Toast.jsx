@@ -15,3 +15,12 @@ export const ToastProvider = ({ children }) => {
       }, duration);
     }
   }, []);
+
+    const removeToast = useCallback((id) => {
+    setToasts(prev => prev.filter(t => t.id !== id));
+  }, []);
+
+  return (
+    <ToastContext.Provider value={{ addToast, removeToast }}>
+      {children}
+      <div className="toast-container"></div>
