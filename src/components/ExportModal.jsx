@@ -23,3 +23,15 @@ const ExportModal = ({
   useEffect(() => {
     if (!isOpen || !previewCanvasRef.current) return;
     const ctx = previewCanvasRef.current.getContext('2d');
+        const displayBg = bgColor === 'transparent' ? null : (bgColor === 'custom' ? customBgColor : bgColor);
+    renderFrame(ctx, frames[currentFrameIndex], gridSize, displayBg);
+  }, [isOpen, frames, currentFrameIndex, gridSize, bgColor, customBgColor]);
+
+  if (!isOpen) return null;
+
+  const handleExport = () => {
+    const finalBgColor = bgColor === 'transparent' ? 'transparent' : (bgColor === 'custom' ? customBgColor : bgColor);
+    
+    switch (exportType) {
+      case 'png':
+        onExportPNG(scale, finalBgColor);
