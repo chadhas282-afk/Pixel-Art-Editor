@@ -117,4 +117,16 @@ const ExportModal = ({
             <div className="section-label">Preview</div>
             <div className="export-preview-box" style={{ 
               background: bgColor === 'transparent' ? 'url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'16\' height=\'16\'><rect width=\'8\' height=\'8\' fill=\'%23ccc\'/><rect x=\'8\' y=\'8\' width=\'8\' height=\'8\' fill=\'%23ccc\'/><rect x=\'8\' width=\'8\' height=\'8\' fill=\'%23eee\'/><rect y=\'8\' width=\'8\' height=\'8\' fill=\'%23eee\'/></svg>")' : 'transparent',
-            }}></div>
+            }}>
+                              <canvas 
+                ref={previewCanvasRef} 
+                width={gridSize} 
+                height={gridSize} 
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'contain',
+                  imageRendering: 'pixelated',
+                }}
+              />
+            </div>
