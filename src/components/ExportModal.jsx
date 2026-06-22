@@ -35,3 +35,13 @@ const ExportModal = ({
     switch (exportType) {
       case 'png':
         onExportPNG(scale, finalBgColor);
+                break;
+      case 'spritesheet':
+        onExportSpritesheet(scale, finalBgColor);
+        break;
+      case 'all':
+        onExportAllFrames(scale, finalBgColor);
+        break;
+      case 'gif':
+        onExportGIF(scale, finalBgColor);
+        break;
