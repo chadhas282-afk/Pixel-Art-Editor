@@ -75,3 +75,13 @@ const CanvasArea = ({
       const prev = frames[currentFrameIndex - 1];
       ctx.globalAlpha = onionOpacity;
       ctx.fillStyle = '#ff4466';
+            prev.forEach((color, i) => {
+        if (!color) return;
+        const x = i % GRID_SIZE, y = Math.floor(i / GRID_SIZE);
+        ctx.fillStyle = color;
+        ctx.fillRect(x * C, y * C, C, C);
+      });
+      ctx.fillStyle = `rgba(255,60,60,${onionOpacity * 0.25})`;
+      ctx.fillRect(0, 0, CANVAS_PX, CANVAS_PX);
+      ctx.globalAlpha = 1;
+    }
