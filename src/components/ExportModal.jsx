@@ -55,3 +55,15 @@ const ExportModal = ({
   };
 
   return (
+        <div className="shortcuts-overlay" onClick={onClose} role="dialog" aria-modal="true">
+      <div className="shortcuts-modal export-modal" onClick={e => e.stopPropagation()}>
+        <div className="shortcuts-header">
+          <h2 className="shortcuts-title">Export Project</h2>
+          <button className="shortcuts-close" onClick={onClose} aria-label="Close">✕</button>
+        </div>
+        
+        <div className="export-modal-body">
+          <div className="export-controls">
+            
+            <div className="export-field">
+              <label className="export-label">Format</label>
