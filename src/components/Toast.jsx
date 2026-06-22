@@ -8,15 +8,15 @@ export const ToastProvider = ({ children }) => {
   const addToast = useCallback((message, type = 'info', duration = 2500) => {
     const id = Date.now().toString() + Math.random().toString(36).substring(2, 9);
     setToasts(prev => [...prev, { id, message, type }]);
-    
-        if (duration > 0) {
+
+    if (duration > 0) {
       setTimeout(() => {
         removeToast(id);
       }, duration);
     }
   }, []);
 
-    const removeToast = useCallback((id) => {
+  const removeToast = useCallback((id) => {
     setToasts(prev => prev.filter(t => t.id !== id));
   }, []);
 
@@ -24,3 +24,9 @@ export const ToastProvider = ({ children }) => {
     <ToastContext.Provider value={{ addToast, removeToast }}>
       {children}
       <div className="toast-container"></div>
+      {toasts.map(toast => (
+        <div key={toast.id} className={`toast toast--${toast.type}`}>
+          <span className="toast-icon">
+            {toast.type === 'success' && '✓'}
+            {toast.type === 'error' && '✕'}
+            {toast.type === 'info' && 'ℹ'}
