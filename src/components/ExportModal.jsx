@@ -130,3 +130,12 @@ const ExportModal = ({
                 }}
               />
             </div>
+                        {exportType !== 'json' && (
+              <div className="export-info-text">
+                Output size: {exportType === 'spritesheet' ? gridSize * frames.length * scale : gridSize * scale}x{gridSize * scale}px
+              </div>
+            )}
+          </div>
+        </div>
+        
+        <div className="export-modal-footer">
