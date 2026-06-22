@@ -43,3 +43,10 @@ const CanvasArea = ({
   }, [hoverCell, onHoverCellChange]);
   useEffect(() => {
     if (onZoomChange) onZoomChange(zoom);
+      }, [zoom, onZoomChange]);
+  const canvasRef = useRef(null);
+  const areaRef   = useRef(null);
+  useLayoutEffect(() => {
+    if (!areaRef.current) return;
+    const { width, height } = areaRef.current.getBoundingClientRect();
+    const availW = width - 80, availH = height - 80;
