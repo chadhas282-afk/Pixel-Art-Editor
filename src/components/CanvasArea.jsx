@@ -50,3 +50,10 @@ const CanvasArea = ({
     if (!areaRef.current) return;
     const { width, height } = areaRef.current.getBoundingClientRect();
     const availW = width - 80, availH = height - 80;
+        const fitZoom = Math.max(0.5, Math.min(8, Math.floor(Math.min(availW, availH) / CANVAS_PX * 4) / 4));
+    const iz = fitZoom;
+    setPanX((width  - CANVAS_PX * iz) / 2);
+    setPanY((height - CANVAS_PX * iz) / 2);
+    setZoom(iz);
+    setPreviewPixels([]);
+    setSelection(null);
