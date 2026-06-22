@@ -66,3 +66,12 @@ const CanvasArea = ({
     const C = BASE_PX;
 
     ctx.clearRect(0, 0, CANVAS_PX, CANVAS_PX);
+        for (let y = 0; y < GRID_SIZE; y++)
+      for (let x = 0; x < GRID_SIZE; x++) {
+        ctx.fillStyle = (x + y) % 2 === 0 ? '#c0c0c4' : '#e8e8ec';
+        ctx.fillRect(x * C, y * C, C, C);
+      }
+    if (onionSkinning && currentFrameIndex > 0) {
+      const prev = frames[currentFrameIndex - 1];
+      ctx.globalAlpha = onionOpacity;
+      ctx.fillStyle = '#ff4466';
