@@ -19,3 +19,9 @@ const CanvasArea = ({
   onionSkinning, onionOpacity, onionNext,
   addRecentColor,
   clipboard, setClipboard,
+    onHoverCellChange, onZoomChange,
+}) => {
+  const CANVAS_PX = GRID_SIZE * BASE_PX;
+  const [zoom, setZoom]   = useState(1);
+  const [panX, setPanX]   = useState(0);
+  const [panY, setPanY]   = useState(0);
