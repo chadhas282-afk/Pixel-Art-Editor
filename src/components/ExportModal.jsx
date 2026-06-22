@@ -103,3 +103,18 @@ const ExportModal = ({
                       type="color" 
                       className="export-color-picker" 
                       value={customBgColor} 
+                                            onChange={e => setCustomBgColor(e.target.value)} 
+                      style={{ marginTop: 8, width: '100%', height: 32, cursor: 'pointer' }}
+                    />
+                  )}
+                </div>
+              </>
+            )}
+            
+          </div>
+          
+          <div className="export-preview-section">
+            <div className="section-label">Preview</div>
+            <div className="export-preview-box" style={{ 
+              background: bgColor === 'transparent' ? 'url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'16\' height=\'16\'><rect width=\'8\' height=\'8\' fill=\'%23ccc\'/><rect x=\'8\' y=\'8\' width=\'8\' height=\'8\' fill=\'%23ccc\'/><rect x=\'8\' width=\'8\' height=\'8\' fill=\'%23eee\'/><rect y=\'8\' width=\'8\' height=\'8\' fill=\'%23eee\'/></svg>")' : 'transparent',
+            }}></div>
