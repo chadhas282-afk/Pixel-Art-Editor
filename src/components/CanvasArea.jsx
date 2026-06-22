@@ -57,3 +57,12 @@ const CanvasArea = ({
     setZoom(iz);
     setPreviewPixels([]);
     setSelection(null);
+        setHoverCell(null);
+  }, [GRID_SIZE, CANVAS_PX]);
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    const C = BASE_PX;
+
+    ctx.clearRect(0, 0, CANVAS_PX, CANVAS_PX);
