@@ -45,3 +45,13 @@ const ExportModal = ({
       case 'gif':
         onExportGIF(scale, finalBgColor);
         break;
+              case 'json':
+        onExportJSON();
+        break;
+      default:
+        break;
+    }
+    onClose();
+  };
+
+  return (
