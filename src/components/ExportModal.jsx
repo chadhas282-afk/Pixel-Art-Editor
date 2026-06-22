@@ -139,3 +139,14 @@ const ExportModal = ({
         </div>
         
         <div className="export-modal-footer">
+                      <button className="btn-secondary" onClick={onClose}>Cancel</button>
+          <button className="btn-primary" onClick={handleExport}>
+            Export {exportType.toUpperCase()}
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default ExportModal;
