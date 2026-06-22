@@ -8,7 +8,7 @@ export const ToastProvider = ({ children }) => {
   const addToast = useCallback((message, type = 'info', duration = 2500) => {
     const id = Date.now().toString() + Math.random().toString(36).substring(2, 9);
     setToasts(prev => [...prev, { id, message, type }]);
-
+    
     if (duration > 0) {
       setTimeout(() => {
         removeToast(id);
@@ -23,16 +23,21 @@ export const ToastProvider = ({ children }) => {
   return (
     <ToastContext.Provider value={{ addToast, removeToast }}>
       {children}
-      <div className="toast-container"></div>
-      {toasts.map(toast => (
-        <div key={toast.id} className={`toast toast--${toast.type}`}>
-          <span className="toast-icon">
-            {toast.type === 'success' && '✓'}
-            {toast.type === 'error' && '✕'}
-            {toast.type === 'info' && 'ℹ'}
-                        </span>
+      <div className="toast-container">
+        {toasts.map(toast => (
+          <div key={toast.id} className={`toast toast--${toast.type}`}>
+            <span className="toast-icon">
+              {toast.type === 'success' && '✓'}
+              {toast.type === 'error' && '✕'}
+              {toast.type === 'info' && 'ℹ'}
+            </span>
             <span className="toast-message">{toast.message}</span>
             <button className="toast-close" onClick={() => removeToast(toast.id)}>✕</button>
           </div>
         ))}
       </div>
+    </ToastContext.Provider>
+  );
+};
+
+export const useToast = () => useContext(ToastContext);
