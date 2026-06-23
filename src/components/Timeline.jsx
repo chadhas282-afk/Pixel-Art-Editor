@@ -63,3 +63,21 @@ const Timeline = ({
           <div className="fps-row">
             <span className="fps-label">Speed</span>
             <span className="fps-value">{fps} FPS</span>
+             </div>
+          <input type="range" min="1" max="30" value={fps} onChange={e => setFps(parseInt(e.target.value))} />
+        </div>
+      </div>
+      <div className="panel-section">
+        <div className="section-label">Onion Skin</div>
+        <div className="onion-controls">
+          <label className="toggle-row">
+            <input type="checkbox" checked={onionSkinning} onChange={e => setOnionSkinning(e.target.checked)} />
+            <span className="toggle-label">Prev frame</span>
+            <span className="toggle-badge" style={{ background: 'rgba(255,60,60,0.25)', color: '#ff6b6b' }}>●</span>
+          </label>
+          <label className="toggle-row">
+            <input type="checkbox" checked={onionNext} onChange={e => setOnionNext(e.target.checked)} />
+            <span className="toggle-label">Next frame</span>
+            <span className="toggle-badge" style={{ background: 'rgba(60,60,255,0.25)', color: '#6b9bff' }}>●</span>
+          </label>
+        </div>
