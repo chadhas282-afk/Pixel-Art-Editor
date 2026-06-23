@@ -21,3 +21,11 @@ const StatusBar = ({
         <span className="status-item color-info">
           <div className="status-color-swatch" style={{ background: selectedColor }} />
           {selectedColor.toUpperCase()}
+          </span>
+        <span className="status-item">Brush: {brushSize === 1 ? '1px' : `${brushSize * 2 - 1}px`}</span>
+      </div>
+      
+      <div className="status-group status-center">
+        {hoverCell ? (
+          <span className="status-item">
+            X: {hoverCell.x} Y: {hoverCell.y}
