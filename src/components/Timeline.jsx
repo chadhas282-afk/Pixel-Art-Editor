@@ -51,3 +51,15 @@ const Timeline = ({
       <div className="panel-section">
         <div className="section-label">Playback</div>
         <div className="playback-controls"></div>
+        <button className="playback-btn" onClick={() => { setCurrentFrameIndex(0); setIsPlaying(false); }} data-tooltip="First">⏮</button>
+          <button className="playback-btn" onClick={() => setCurrentFrameIndex(i => Math.max(0, i - 1))} data-tooltip="Prev">⏪</button>
+          <button className={`playback-btn ${isPlaying ? 'playing' : ''}`} onClick={() => setIsPlaying(p => !p)} style={{ flex: 2 }}>
+            {isPlaying ? '⏸' : '▶'}
+          </button>
+          <button className="playback-btn" onClick={() => setCurrentFrameIndex(i => Math.min(frames.length - 1, i + 1))} data-tooltip="Next">⏩</button>
+          <button className="playback-btn" onClick={() => { setCurrentFrameIndex(frames.length - 1); setIsPlaying(false); }} data-tooltip="Last">⏭</button>
+        </div>
+        <div style={{ marginTop: 10 }}>
+          <div className="fps-row">
+            <span className="fps-label">Speed</span>
+            <span className="fps-value">{fps} FPS</span>
