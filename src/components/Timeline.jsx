@@ -123,3 +123,14 @@ const Timeline = ({
                 className="frame-preview-canvas"
               />
               <div className="frame-meta"></div>
+              <div className="frame-name">Frame {index + 1}</div>
+                <div className="frame-index">#{String(index + 1).padStart(2, '0')}</div>
+              </div>
+              <div className="frame-actions">
+                <button className="frame-action-btn" onClick={e => { e.stopPropagation(); moveFrame(index, index - 1); }} disabled={index === 0} data-tooltip="Move up">↑</button>
+                <button className="frame-action-btn" onClick={e => { e.stopPropagation(); moveFrame(index, index + 1); }} disabled={index === frames.length - 1} data-tooltip="Move down">↓</button>
+                <button className="frame-delete-btn" onClick={e => { e.stopPropagation(); deleteFrame(index); }} disabled={frames.length === 1} data-tooltip="Delete frame">✕</button>
+              </div>
+            </div>
+          ))}
+        </div>
