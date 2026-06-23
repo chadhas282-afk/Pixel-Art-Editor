@@ -60,3 +60,7 @@ const GROUPS = [
 ];
 
 const KeyboardShortcutsOverlay = ({ onClose }) => (
+    <div className="shortcuts-overlay" onClick={onClose} role="dialog" aria-modal="true" aria-label="Keyboard shortcuts">
+    <div className="shortcuts-modal" onClick={e => e.stopPropagation()}>
+      <div className="shortcuts-header">
+        <h2 className="shortcuts-title">⌨ Keyboard Shortcuts</h2>
