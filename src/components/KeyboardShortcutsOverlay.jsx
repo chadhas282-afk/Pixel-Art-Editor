@@ -21,3 +21,12 @@ const GROUPS = [
         items: [
             { key: '⌘Z', desc: 'Undo' },
             { key: '⌘⇧Z', desc: 'Redo' },
+                ],
+  },
+  {
+    label: 'Selection',
+    items: [
+      { key: '⌘C', desc: 'Copy selection' },
+      { key: '⌘X', desc: 'Cut selection' },
+      { key: '⌘V', desc: 'Paste' },
+      { key: 'Del / ⌫', desc: 'Clear selection' },
