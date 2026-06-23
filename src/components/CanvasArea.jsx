@@ -111,3 +111,19 @@ const CanvasArea = ({
       ctx.fillRect(0, 0, CANVAS_PX, CANVAS_PX);
       ctx.globalAlpha = 1;
     }
+    frame.forEach((color, i) => {
+      if (!color) return;
+      ctx.fillStyle = color;
+      const x = i % GRID_SIZE, y = Math.floor(i / GRID_SIZE);
+      ctx.fillRect(x * C, y * C, C, C);
+    });
+    if (showGrid && BASE_PX * zoom >= 4) {
+      ctx.strokeStyle = 'rgba(0,0,0,0.09)';
+      ctx.lineWidth = 0.5;
+      for (let x = 0; x <= GRID_SIZE; x++) {
+        ctx.beginPath(); ctx.moveTo(x * C, 0); ctx.lineTo(x * C, CANVAS_PX); ctx.stroke();
+      }
+      for (let y = 0; y <= GRID_SIZE; y++) {
+        ctx.beginPath(); ctx.moveTo(0, y * C); ctx.lineTo(CANVAS_PX, y * C); ctx.stroke();
+      }
+    }
