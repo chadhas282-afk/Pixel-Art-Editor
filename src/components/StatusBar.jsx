@@ -29,3 +29,12 @@ const StatusBar = ({
         {hoverCell ? (
           <span className="status-item">
             X: {hoverCell.x} Y: {hoverCell.y}
+            </span>
+        ) : (
+          <span className="status-item">Cursor outside canvas</span>
+        )}
+      </div>
+      
+      <div className="status-group status-right">
+        <span className="status-item">History: {undoCount}U / {redoCount}R</span>
+        <span className="status-item">Grid: {gridSize}x{gridSize}</span>
