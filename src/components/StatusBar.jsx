@@ -12,7 +12,7 @@ const StatusBar = ({
   totalFrames,
   gridSize,
 }) => {
-    return (
+  return (
     <footer className="status-bar">
       <div className="status-group">
         <span className="status-item tool-info">
@@ -21,7 +21,7 @@ const StatusBar = ({
         <span className="status-item color-info">
           <div className="status-color-swatch" style={{ background: selectedColor }} />
           {selectedColor.toUpperCase()}
-          </span>
+        </span>
         <span className="status-item">Brush: {brushSize === 1 ? '1px' : `${brushSize * 2 - 1}px`}</span>
       </div>
       
@@ -29,7 +29,7 @@ const StatusBar = ({
         {hoverCell ? (
           <span className="status-item">
             X: {hoverCell.x} Y: {hoverCell.y}
-            </span>
+          </span>
         ) : (
           <span className="status-item">Cursor outside canvas</span>
         )}
@@ -38,3 +38,11 @@ const StatusBar = ({
       <div className="status-group status-right">
         <span className="status-item">History: {undoCount}U / {redoCount}R</span>
         <span className="status-item">Grid: {gridSize}x{gridSize}</span>
+        <span className="status-item">Frame {currentFrameIndex + 1}/{totalFrames}</span>
+        <span className="status-item">Zoom: {Math.round(zoom * 100)}%</span>
+      </div>
+    </footer>
+  );
+};
+
+export default StatusBar;
