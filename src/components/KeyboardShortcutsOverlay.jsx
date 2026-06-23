@@ -52,3 +52,11 @@ const GROUPS = [
     ],
   },
   {
+    label: 'Other',
+    items: [
+      { key: '?', desc: 'Keyboard shortcuts' },
+    ],
+  },
+];
+
+const KeyboardShortcutsOverlay = ({ onClose }) => (
