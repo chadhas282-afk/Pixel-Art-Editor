@@ -20,3 +20,13 @@ const Timeline = ({
       interval = setInterval(() => setPlayIndex(p => (p + 1) % frames.length), 1000 / fps);
     } else {
       setPlayIndex(currentFrameIndex);
+      }
+    return () => clearInterval(interval);
+  }, [isPlaying, fps, frames.length, currentFrameIndex]);
+  useEffect(() => {
+    const frame = isPlaying ? frames[playIndex] : frames[currentFrameIndex];
+    if (frame) renderFrame(previewRef.current?.getContext('2d'), frame, GRID_SIZE, '#ffffff');
+  }, [frames, currentFrameIndex, playIndex, isPlaying, GRID_SIZE]);
+  useEffect(() => {
+    frames.forEach((frame, i) => {
+      const canvas = thumbRefs.current[i];
