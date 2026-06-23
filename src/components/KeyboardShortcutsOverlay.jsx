@@ -45,3 +45,10 @@ const GROUPS = [
     ],
   },
   {
+    label: 'Transform',
+    items: [
+      { key: 'F', desc: 'Flip horizontal' },
+      { key: 'V', desc: 'Flip vertical' },
+    ],
+  },
+  {
