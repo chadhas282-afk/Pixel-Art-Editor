@@ -41,3 +41,13 @@ const Timeline = ({
           <canvas
             ref={previewRef}
             width={GRID_SIZE} height={GRID_SIZE}
+            className="preview-canvas"
+          />
+          {isPlaying && (
+            <span className="preview-live-badge">● LIVE</span>
+          )}
+        </div>
+      </div>
+      <div className="panel-section">
+        <div className="section-label">Playback</div>
+        <div className="playback-controls"></div>
