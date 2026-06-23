@@ -8,3 +8,7 @@ const GROUPS = [
       { key: 'E', desc: 'Eraser' },
       { key: 'G', desc: 'Fill (bucket)' },
       { key: 'I', desc: 'Eyedropper' },
+            { key: 'L', desc: 'Line' },
+      { key: 'R', desc: 'Rectangle' },
+      { key: 'O', desc: 'Ellipse' },
+      { key: 'A', desc: 'Spray' },
