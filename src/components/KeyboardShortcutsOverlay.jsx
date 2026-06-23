@@ -39,3 +39,9 @@ const GROUPS = [
       { key: 'Scroll ↕', desc: 'Zoom in / out' },
       { key: 'Space+drag', desc: 'Pan canvas' },
       { key: 'Middle drag', desc: 'Pan canvas' },
+      { key: '0', desc: 'Reset / fit view' },
+      { key: '[ / ]', desc: 'Brush size −/+' },
+      { key: 'H', desc: 'Toggle grid' },
+    ],
+  },
+  {
