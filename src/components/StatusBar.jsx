@@ -5,3 +5,10 @@ const StatusBar = ({
   selectedColor,
   brushSize,
   hoverCell,
+  zoom,
+  undoCount,
+  redoCount,
+  currentFrameIndex,
+  totalFrames,
+  gridSize,
+}) => {
