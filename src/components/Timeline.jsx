@@ -103,3 +103,23 @@ const Timeline = ({
             <button className="action-btn" style={{ padding: '4px 8px', fontSize: 10 }} onClick={addBlankFrame} data-tooltip="Add blank frame">
               + Blank
             </button>
+            <button className="action-btn" style={{ padding: '4px 8px', fontSize: 10, background: 'var(--accent-dim)', borderColor: 'var(--accent)', color: 'var(--accent-light)' }} onClick={addFrame} data-tooltip="Duplicate current frame">
+              ⧉ Dupe
+            </button>
+          </div>
+        </div>
+      </div>
+      <div className="panel-section--scrollable">
+        <div className="frames-list">
+          {frames.map((frame, index) => (
+            <div
+              key={index}
+              className={`frame-item ${currentFrameIndex === index ? 'selected' : ''}`}
+              onClick={() => { setIsPlaying(false); setCurrentFrameIndex(index); }}
+            >
+              <canvas
+                ref={el => { thumbRefs.current[index] = el; if (el) renderFrame(el.getContext('2d'), frame, GRID_SIZE, '#ffffff'); }}
+                width={GRID_SIZE} height={GRID_SIZE}
+                className="frame-preview-canvas"
+              />
+              <div className="frame-meta"></div>
