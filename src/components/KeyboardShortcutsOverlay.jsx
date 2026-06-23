@@ -30,3 +30,12 @@ const GROUPS = [
       { key: '⌘X', desc: 'Cut selection' },
       { key: '⌘V', desc: 'Paste' },
       { key: 'Del / ⌫', desc: 'Clear selection' },
+      { key: 'Esc', desc: 'Deselect' },
+    ],
+  },
+  {
+    label: 'Canvas & View',
+    items: [
+      { key: 'Scroll ↕', desc: 'Zoom in / out' },
+      { key: 'Space+drag', desc: 'Pan canvas' },
+      { key: 'Middle drag', desc: 'Pan canvas' },
