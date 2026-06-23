@@ -70,3 +70,9 @@ const KeyboardShortcutsOverlay = ({ onClose }) => (
         {GROUPS.map(group => (
           <div key={group.label} className="shortcuts-group">
             <div className="shortcuts-group-label">{group.label}</div>
+            {group.items.map(item => (
+              <div key={item.key} className="shortcut-row">
+                <kbd className="shortcut-key">{item.key}</kbd>
+                <span className="shortcut-desc">{item.desc}</span>
+              </div>
+            ))}
