@@ -30,3 +30,14 @@ const Timeline = ({
   useEffect(() => {
     frames.forEach((frame, i) => {
       const canvas = thumbRefs.current[i];
+      if (canvas) renderFrame(canvas.getContext('2d'), frame, GRID_SIZE, '#ffffff');
+    });
+  }, [frames, GRID_SIZE]);
+  return (
+    <aside className="timeline panel panel--right">
+      <div className="panel-section">
+        <div className="section-label">Preview</div>
+        <div className="preview-box">
+          <canvas
+            ref={previewRef}
+            width={GRID_SIZE} height={GRID_SIZE}
