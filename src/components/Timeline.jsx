@@ -81,3 +81,25 @@ const Timeline = ({
             <span className="toggle-badge" style={{ background: 'rgba(60,60,255,0.25)', color: '#6b9bff' }}>●</span>
           </label>
         </div>
+        {(onionSkinning || onionNext) && (
+          <div style={{ marginTop: 8 }}>
+            <div className="fps-row">
+              <span className="fps-label">Opacity</span>
+              <span className="fps-value">{Math.round(onionOpacity * 100)}%</span>
+            </div>
+            <input type="range" min="5" max="80" value={Math.round(onionOpacity * 100)}
+              onChange={e => setOnionOpacity(e.target.value / 100)} />
+          </div>
+        )}
+      </div>
+      <div className="panel-section" style={{ flexShrink: 0 }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 8 }}>
+          <span className="section-label" style={{ marginBottom: 0 }}>
+            Frames <span style={{ fontFamily: 'var(--font-mono)', color: 'var(--accent-light)' }}>
+              {currentFrameIndex + 1}/{frames.length}
+            </span>
+          </span>
+          <div style={{ display: 'flex', gap: 4 }}>
+            <button className="action-btn" style={{ padding: '4px 8px', fontSize: 10 }} onClick={addBlankFrame} data-tooltip="Add blank frame">
+              + Blank
+            </button>
