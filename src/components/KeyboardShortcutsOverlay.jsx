@@ -64,3 +64,9 @@ const KeyboardShortcutsOverlay = ({ onClose }) => (
     <div className="shortcuts-modal" onClick={e => e.stopPropagation()}>
       <div className="shortcuts-header">
         <h2 className="shortcuts-title">⌨ Keyboard Shortcuts</h2>
+        <button className="shortcuts-close" onClick={onClose} aria-label="Close">✕</button>
+      </div>
+      <div className="shortcuts-grid">
+        {GROUPS.map(group => (
+          <div key={group.label} className="shortcuts-group">
+            <div className="shortcuts-group-label">{group.label}</div>
