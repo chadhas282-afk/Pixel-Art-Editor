@@ -7,7 +7,7 @@ const Timeline = ({
   fps, setFps, isPlaying, setIsPlaying,
   GRID_SIZE,
   onionSkinning, setOnionSkinning,
-    onionOpacity, setOnionOpacity,
+  onionOpacity, setOnionOpacity,
   onionNext, setOnionNext,
   onOpenExportModal,
 }) => {
@@ -20,7 +20,7 @@ const Timeline = ({
       interval = setInterval(() => setPlayIndex(p => (p + 1) % frames.length), 1000 / fps);
     } else {
       setPlayIndex(currentFrameIndex);
-      }
+    }
     return () => clearInterval(interval);
   }, [isPlaying, fps, frames.length, currentFrameIndex]);
   useEffect(() => {
@@ -50,8 +50,8 @@ const Timeline = ({
       </div>
       <div className="panel-section">
         <div className="section-label">Playback</div>
-        <div className="playback-controls"></div>
-        <button className="playback-btn" onClick={() => { setCurrentFrameIndex(0); setIsPlaying(false); }} data-tooltip="First">⏮</button>
+        <div className="playback-controls">
+          <button className="playback-btn" onClick={() => { setCurrentFrameIndex(0); setIsPlaying(false); }} data-tooltip="First">⏮</button>
           <button className="playback-btn" onClick={() => setCurrentFrameIndex(i => Math.max(0, i - 1))} data-tooltip="Prev">⏪</button>
           <button className={`playback-btn ${isPlaying ? 'playing' : ''}`} onClick={() => setIsPlaying(p => !p)} style={{ flex: 2 }}>
             {isPlaying ? '⏸' : '▶'}
@@ -63,7 +63,7 @@ const Timeline = ({
           <div className="fps-row">
             <span className="fps-label">Speed</span>
             <span className="fps-value">{fps} FPS</span>
-             </div>
+          </div>
           <input type="range" min="1" max="30" value={fps} onChange={e => setFps(parseInt(e.target.value))} />
         </div>
       </div>
@@ -122,8 +122,8 @@ const Timeline = ({
                 width={GRID_SIZE} height={GRID_SIZE}
                 className="frame-preview-canvas"
               />
-              <div className="frame-meta"></div>
-              <div className="frame-name">Frame {index + 1}</div>
+              <div className="frame-meta">
+                <div className="frame-name">Frame {index + 1}</div>
                 <div className="frame-index">#{String(index + 1).padStart(2, '0')}</div>
               </div>
               <div className="frame-actions">
@@ -134,3 +134,15 @@ const Timeline = ({
             </div>
           ))}
         </div>
+      </div>
+      <div className="panel-section">
+        <div className="section-label">Export</div>
+        <button className="btn-primary" style={{ width: '100%', padding: '8px 0' }} onClick={onOpenExportModal}>
+          📤 Export Options...
+        </button>
+      </div>
+    </aside>
+  );
+};
+
+export default Timeline;
