@@ -174,3 +174,12 @@ const CanvasArea = ({
       ctx.lineWidth = 1;
       ctx.setLineDash([5, 3]);
       const mid = CANVAS_PX / 2;
+            if (symmetryMode === 'x' || symmetryMode === 'both') {
+        ctx.beginPath(); ctx.moveTo(mid, 0); ctx.lineTo(mid, CANVAS_PX); ctx.stroke();
+      }
+      if (symmetryMode === 'y' || symmetryMode === 'both') {
+        ctx.beginPath(); ctx.moveTo(0, mid); ctx.lineTo(CANVAS_PX, mid); ctx.stroke();
+      }
+      ctx.setLineDash([]); ctx.restore();
+    }
+  }, [
