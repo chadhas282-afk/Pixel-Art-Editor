@@ -201,3 +201,13 @@ const CanvasArea = ({
   const applyPixels = useCallback((frame, indices, tool, color) => {
     const next = [...frame];
     indices.forEach(i => {
+      if (i < 0 || i >= next.length) return;
+      next[i] = tool === 'eraser' ? null : color;
+    });
+    return next;
+  }, []);
+
+  const paintAt = useCallback((cell, tool) => {
+    if (!cell || !strokeFrameRef.current) return;
+    const { x, y } = cell;
+    let pixels;
