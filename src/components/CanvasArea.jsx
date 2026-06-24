@@ -261,3 +261,14 @@ const CanvasArea = ({
         const data = [];
         for (let dy = 0; dy < h; dy++)
           for (let dx = 0; dx < w; dx++)
+        data.push(frame[(minY + dy) * GRID_SIZE + (minX + dx)] ?? null);
+        setClipboard({ data, width: w, height: h });
+        if (e.key === 'x') {
+          const next = [...frame];
+          for (let dy = 0; dy < h; dy++)
+            for (let dx = 0; dx < w; dx++)
+              next[(minY + dy) * GRID_SIZE + (minX + dx)] = null;
+          commitFrame(next);
+          setSelection(null);
+        }
+      }
