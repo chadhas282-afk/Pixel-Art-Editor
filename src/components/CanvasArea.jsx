@@ -165,3 +165,12 @@ const CanvasArea = ({
       ctx.strokeRect(sx + 0.75, sy + 0.75, sw - 1.5, sh - 1.5);
       ctx.strokeStyle = '#000000';
       ctx.lineDashOffset = 5;
+            ctx.strokeRect(sx + 0.75, sy + 0.75, sw - 1.5, sh - 1.5);
+      ctx.setLineDash([]); ctx.lineDashOffset = 0;
+    }
+    if (symmetryMode !== 'none') {
+      ctx.save();
+      ctx.strokeStyle = 'rgba(108,99,255,0.45)';
+      ctx.lineWidth = 1;
+      ctx.setLineDash([5, 3]);
+      const mid = CANVAS_PX / 2;
