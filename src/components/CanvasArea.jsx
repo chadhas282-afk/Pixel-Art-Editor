@@ -138,3 +138,14 @@ const CanvasArea = ({
     if (hoverCell && !isPanning) {
       const { x: hx, y: hy } = hoverCell;
       let previewSet;
+            if (['pencil', 'eraser', 'spray', 'dither'].includes(selectedTool)) {
+        const bp = getBrushPixels(hx, hy, brushSize, GRID_SIZE);
+        previewSet = applySymmetry(bp, symmetryMode, GRID_SIZE);
+      } else {
+        previewSet = [hy * GRID_SIZE + hx];
+      }
+      previewSet.forEach(i => {
+        const x = i % GRID_SIZE, y = Math.floor(i / GRID_SIZE);
+        ctx.fillStyle = selectedTool === 'eraser'
+          ? 'rgba(255,80,80,0.4)'
+          : selectedColor + '77';
