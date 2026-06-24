@@ -218,3 +218,12 @@ const CanvasArea = ({
     const next = applyPixels(strokeFrameRef.current, all, tool, selectedColor);
     strokeFrameRef.current = next;
     paintFrame(next);
+    }, [brushSize, symmetryMode, GRID_SIZE, selectedColor, applyPixels, paintFrame]);
+
+  useEffect(() => {
+    const area = areaRef.current;
+    if (!area) return;
+    const onWheel = (e) => {
+      e.preventDefault();
+      const { zoom: z, panX: px, panY: py } = viewRef.current;
+      const rect = area.getBoundingClientRect();
