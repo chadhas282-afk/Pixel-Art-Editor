@@ -211,3 +211,10 @@ const CanvasArea = ({
     if (!cell || !strokeFrameRef.current) return;
     const { x, y } = cell;
     let pixels;
+    if (tool === 'spray')  pixels = getSprayPixels(x, y, brushSize, GRID_SIZE);
+    else if (tool === 'dither') pixels = getDitherPixels(x, y, brushSize, GRID_SIZE);
+    else pixels = getBrushPixels(x, y, brushSize, GRID_SIZE);
+    const all = applySymmetry(pixels, symmetryMode, GRID_SIZE);
+    const next = applyPixels(strokeFrameRef.current, all, tool, selectedColor);
+    strokeFrameRef.current = next;
+    paintFrame(next);
