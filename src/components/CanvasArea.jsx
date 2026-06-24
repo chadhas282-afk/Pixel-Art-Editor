@@ -253,3 +253,11 @@ const CanvasArea = ({
       if (['INPUT', 'SELECT', 'TEXTAREA'].includes(e.target.tagName)) return;
       const { x1, y1, x2, y2 } = selection;
       const minX = Math.min(x1, x2), maxX = Math.max(x1, x2);
+      const minY = Math.min(y1, y2), maxY = Math.max(y1, y2);
+      const w = maxX - minX + 1, h = maxY - minY + 1;
+
+      if ((e.ctrlKey || e.metaKey) && (e.key === 'c' || e.key === 'x')) {
+        e.preventDefault();
+        const data = [];
+        for (let dy = 0; dy < h; dy++)
+          for (let dx = 0; dx < w; dx++)
