@@ -279,3 +279,12 @@ const CanvasArea = ({
           for (let dx = 0; dx < clipboard.width; dx++) {
             const c = clipboard.data[dy * clipboard.width + dx];
             const tx = minX + dx, ty = minY + dy;
+            if (c && tx >= 0 && tx < GRID_SIZE && ty >= 0 && ty < GRID_SIZE)
+              next[ty * GRID_SIZE + tx] = c;
+          }
+        commitFrame(next);
+      }
+      if (e.key === 'Delete' || e.key === 'Backspace') {
+        e.preventDefault();
+        const next = [...frame];
+        for (let dy = 0; dy < h; dy++)
