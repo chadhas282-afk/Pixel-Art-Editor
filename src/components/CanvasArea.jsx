@@ -158,3 +158,10 @@ const CanvasArea = ({
     if (selection) {
       const { x1, y1, x2, y2 } = selection;
       const sx = Math.min(x1, x2) * C, sy = Math.min(y1, y2) * C;
+      const sw = (Math.abs(x2 - x1) + 1) * C, sh = (Math.abs(y2 - y1) + 1) * C;
+      ctx.setLineDash([5, 3]);
+      ctx.strokeStyle = '#ffffff';
+      ctx.lineWidth = 1.5;
+      ctx.strokeRect(sx + 0.75, sy + 0.75, sw - 1.5, sh - 1.5);
+      ctx.strokeStyle = '#000000';
+      ctx.lineDashOffset = 5;
