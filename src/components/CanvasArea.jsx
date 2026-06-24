@@ -243,3 +243,13 @@ const CanvasArea = ({
     const dn = (e) => { if (e.code === 'Space' && e.target.tagName !== 'INPUT') { e.preventDefault(); setSpaceDown(true); } };
     const up = (e) => { if (e.code === 'Space') setSpaceDown(false); };
     window.addEventListener('keydown', dn);
+    window.addEventListener('keyup', up);
+    return () => { window.removeEventListener('keydown', dn); window.removeEventListener('keyup', up); };
+  }, []);
+
+  useEffect(() => {
+    const onKey = (e) => {
+      if (!selection) return;
+      if (['INPUT', 'SELECT', 'TEXTAREA'].includes(e.target.tagName)) return;
+      const { x1, y1, x2, y2 } = selection;
+      const minX = Math.min(x1, x2), maxX = Math.max(x1, x2);
