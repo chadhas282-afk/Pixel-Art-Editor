@@ -296,3 +296,14 @@ const CanvasArea = ({
       if (e.key === 'Escape') setSelection(null);
     };
     window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [selection, frame, clipboard, GRID_SIZE, setClipboard, commitFrame]);
+
+  const handleMouseDown = useCallback((e) => {
+    if (e.button === 1 || (e.button === 0 && spaceDown)) {
+      e.preventDefault();
+      setIsPanning(true);
+      panStartRef.current = { x: e.clientX, y: e.clientY, panX, panY };
+      return;
+    }
+    if (e.button !== 0) return;
