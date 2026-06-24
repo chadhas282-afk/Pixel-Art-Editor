@@ -288,3 +288,11 @@ const CanvasArea = ({
         e.preventDefault();
         const next = [...frame];
         for (let dy = 0; dy < h; dy++)
+          for (let dx = 0; dx < w; dx++)
+            next[(minY + dy) * GRID_SIZE + (minX + dx)] = null;
+        commitFrame(next);
+        setSelection(null);
+      }
+      if (e.key === 'Escape') setSelection(null);
+    };
+    window.addEventListener('keydown', onKey);
