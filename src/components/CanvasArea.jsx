@@ -234,3 +234,12 @@ const CanvasArea = ({
       setPanX(px + (relX - px) * (1 - newZoom / z));
       setPanY(py + (relY - py) * (1 - newZoom / z));
       setZoom(newZoom);
+      };
+    area.addEventListener('wheel', onWheel, { passive: false });
+    return () => area.removeEventListener('wheel', onWheel);
+  }, []);
+
+  useEffect(() => {
+    const dn = (e) => { if (e.code === 'Space' && e.target.tagName !== 'INPUT') { e.preventDefault(); setSpaceDown(true); } };
+    const up = (e) => { if (e.code === 'Space') setSpaceDown(false); };
+    window.addEventListener('keydown', dn);
