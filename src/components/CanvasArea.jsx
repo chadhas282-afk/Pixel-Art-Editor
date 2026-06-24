@@ -227,3 +227,10 @@ const CanvasArea = ({
       e.preventDefault();
       const { zoom: z, panX: px, panY: py } = viewRef.current;
       const rect = area.getBoundingClientRect();
+      const relX = e.clientX - rect.left;
+      const relY = e.clientY - rect.top;
+      const factor = e.deltaY < 0 ? 1.15 : 0.87;
+      const newZoom = Math.max(0.25, Math.min(20, z * factor));
+      setPanX(px + (relX - px) * (1 - newZoom / z));
+      setPanY(py + (relY - py) * (1 - newZoom / z));
+      setZoom(newZoom);
