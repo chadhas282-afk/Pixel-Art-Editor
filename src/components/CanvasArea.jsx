@@ -183,3 +183,12 @@ const CanvasArea = ({
       ctx.setLineDash([]); ctx.restore();
     }
   }, [
+        frame, frames, currentFrameIndex, showGrid, previewPixels, hoverCell, selection,
+    GRID_SIZE, CANVAS_PX, selectedColor, selectedTool, brushSize, symmetryMode,
+    onionSkinning, onionOpacity, onionNext, isPanning, zoom,
+  ]);
+
+  const getCell = useCallback((e) => {
+    if (!areaRef.current) return null;
+    const { zoom: z, panX: px, panY: py } = viewRef.current;
+    const rect = areaRef.current.getBoundingClientRect();
