@@ -307,3 +307,25 @@ const CanvasArea = ({
       return;
     }
     if (e.button !== 0) return;
+    e.preventDefault();
+
+    const cell = getCell(e);
+    if (!cell) return;
+    const { x, y, index } = cell;
+
+    isDrawingRef.current = true;
+
+    switch (selectedTool) {
+      case 'eyedropper': {
+        const c = frame[index];
+        if (c) { setSelectedColor(c); addRecentColor(c); }
+        isDrawingRef.current = false;
+        return;
+      }
+      case 'fill': {
+        const filled = floodFill(frame, index, selectedColor, GRID_SIZE);
+        commitFrame(filled);
+        addRecentColor(selectedColor);
+        isDrawingRef.current = false;
+        return;
+      }
