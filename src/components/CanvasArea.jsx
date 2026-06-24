@@ -192,3 +192,12 @@ const CanvasArea = ({
     if (!areaRef.current) return null;
     const { zoom: z, panX: px, panY: py } = viewRef.current;
     const rect = areaRef.current.getBoundingClientRect();
+    const cx = Math.floor(((e.clientX - rect.left - px) / z) / BASE_PX);
+    const cy = Math.floor(((e.clientY - rect.top  - py) / z) / BASE_PX);
+    if (cx < 0 || cx >= GRID_SIZE || cy < 0 || cy >= GRID_SIZE) return null;
+    return { x: cx, y: cy, index: cy * GRID_SIZE + cx };
+  }, [GRID_SIZE]);
+
+  const applyPixels = useCallback((frame, indices, tool, color) => {
+    const next = [...frame];
+    indices.forEach(i => {
