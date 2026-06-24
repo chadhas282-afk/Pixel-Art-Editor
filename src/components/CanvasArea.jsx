@@ -127,3 +127,14 @@ const CanvasArea = ({
         ctx.beginPath(); ctx.moveTo(0, y * C); ctx.lineTo(CANVAS_PX, y * C); ctx.stroke();
       }
     }
+        if (previewPixels.length > 0) {
+      ctx.globalAlpha = 0.75;
+      previewPixels.forEach(i => {
+        ctx.fillStyle = selectedColor;
+        ctx.fillRect((i % GRID_SIZE) * C, Math.floor(i / GRID_SIZE) * C, C, C);
+      });
+      ctx.globalAlpha = 1;
+    }
+    if (hoverCell && !isPanning) {
+      const { x: hx, y: hy } = hoverCell;
+      let previewSet;
