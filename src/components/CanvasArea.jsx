@@ -149,3 +149,12 @@ const CanvasArea = ({
         ctx.fillStyle = selectedTool === 'eraser'
           ? 'rgba(255,80,80,0.4)'
           : selectedColor + '77';
+                  ctx.fillRect(x * C, y * C, C, C);
+        ctx.strokeStyle = 'rgba(255,255,255,0.65)';
+        ctx.lineWidth = 1;
+        ctx.strokeRect(x * C + 0.5, y * C + 0.5, C - 1, C - 1);
+      });
+    }
+    if (selection) {
+      const { x1, y1, x2, y2 } = selection;
+      const sx = Math.min(x1, x2) * C, sy = Math.min(y1, y2) * C;
