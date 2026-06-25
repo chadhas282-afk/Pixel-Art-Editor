@@ -67,3 +67,14 @@ const Sidebar = ({
               onClick={() => setBrushSize(size)}
               data-tooltip={`Size ${size} (${size === 1 ? '1px' : `${size * 2 - 1}px`})`}
             >
+                <div className="brush-dot" style={{ width: size * 4 + 2, height: size * 4 + 2 }} />
+            </button>
+          ))}
+          <button
+            className={`brush-size-btn ${brushSize > 5 ? 'active' : ''}`}
+            onClick={() => setBrushSize(8)}
+            data-tooltip="Large brush (8px)"
+            style={{ fontSize: 10 }}
+          >
+            XL
+          </button>
