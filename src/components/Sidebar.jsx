@@ -130,3 +130,14 @@ const Sidebar = ({
           <div className="section-label">Recent</div>
           <div className="palette-grid">
             {recentColors.map((color, i) => (
+                <div
+                key={i}
+                className={`palette-color ${selectedColor === color ? 'selected' : ''}`}
+                style={{ backgroundColor: color }}
+                onClick={() => setSelectedColor(color)}
+                data-tooltip={color.toUpperCase()}
+              />
+            ))}
+          </div>
+        </div>
+      )}
