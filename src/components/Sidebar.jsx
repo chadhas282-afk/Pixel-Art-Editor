@@ -114,3 +114,19 @@ const Sidebar = ({
         </div>
         <div className="color-hex-display">
           <div className="color-preview-dot" style={{ background: selectedColor }} />
+          <input
+            className="color-hex-input"
+            value={selectedColor}
+            onChange={e => {
+              const v = e.target.value;
+              if (/^#[0-9a-fA-F]{0,6}$/.test(v)) setSelectedColor(v);
+            }}
+            spellCheck={false}
+          />
+        </div>
+      </div>
+      {recentColors.length > 0 && (
+        <div className="panel-section">
+          <div className="section-label">Recent</div>
+          <div className="palette-grid">
+            {recentColors.map((color, i) => (
