@@ -416,3 +416,12 @@ const CanvasArea = ({
   }, [isPanning]);
 
   const resetView = useCallback(() => {
+    if (!areaRef.current) return;
+    const { width, height } = areaRef.current.getBoundingClientRect();
+    const nz = Math.max(0.25, Math.min(8, Math.floor(Math.min(width - 80, height - 80) / CANVAS_PX * 4) / 4));
+    setPanX((width  - CANVAS_PX * nz) / 2);
+    setPanY((height - CANVAS_PX * nz) / 2);
+    setZoom(nz);
+  }, [CANVAS_PX]);
+
+  const zoomStep = useCallback((factor) => {
