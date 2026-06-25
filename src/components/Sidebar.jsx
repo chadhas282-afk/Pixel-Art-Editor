@@ -78,3 +78,14 @@ const Sidebar = ({
           >
             XL
           </button>
+          </div>
+      </div>
+
+      <div className="panel-section">
+        <div className="section-label">Symmetry</div>
+        <div className="symmetry-row">
+          {SYMMETRY_OPTIONS.map(opt => (
+            <button
+              key={opt.id}
+              className={`symmetry-btn ${symmetryMode === opt.id ? 'active' : ''}`}
+              onClick={() => setSymmetryMode(opt.id)}
