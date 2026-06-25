@@ -385,3 +385,13 @@ const CanvasArea = ({
     if (['pencil', 'eraser', 'spray', 'dither'].includes(selectedTool)) {
       if (strokeFrameRef.current) {
         commitFrame(strokeFrameRef.current);
+        if (selectedTool !== 'eraser') addRecentColor(selectedColor);
+      }
+      strokeFrameRef.current = null;
+      return;
+    }
+
+    if (['line', 'rectangle', 'ellipse'].includes(selectedTool) && startCell && cell) {
+      const { x: x0, y: y0 } = startCell;
+      const { x: x1, y: y1 } = cell;
+      let pixels;
