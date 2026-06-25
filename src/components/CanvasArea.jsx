@@ -457,3 +457,8 @@ const CanvasArea = ({
           ⊞ Grid
         </button>
         <div className="canvas-toolbar-divider" />
+        <button className="canvas-toggle-btn" onClick={() => zoomStep(0.8)}>−</button>
+        <span className="canvas-info" style={{ minWidth: 38, textAlign: 'center' }}>{Math.round(zoom * 100)}%</span>
+        <button className="canvas-toggle-btn" onClick={() => zoomStep(1.25)}>+</button>
+        <button className="canvas-toggle-btn" onClick={resetView} data-tooltip="Fit to screen (0)">Fit</button>
+        <div className="canvas-toolbar-divider" />
