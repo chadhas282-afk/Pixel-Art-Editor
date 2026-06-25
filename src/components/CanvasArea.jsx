@@ -361,3 +361,14 @@ const CanvasArea = ({
         break;
       case 'rectangle':
         if (startCell) setPreviewPixels(e.shiftKey
+          ? getFilledRectPixels(startCell.x, startCell.y, x, y, GRID_SIZE)
+          : getRectPixels(startCell.x, startCell.y, x, y, GRID_SIZE));
+        break;
+      case 'ellipse':
+        if (startCell) setPreviewPixels(getEllipsePixels(startCell.x, startCell.y, x, y, GRID_SIZE));
+        break;
+      case 'select':
+        setSelection(prev => prev ? { ...prev, x2: x, y2: y } : { x1: x, y1: y, x2: x, y2: y });
+        break;
+      default: break;
+    }
