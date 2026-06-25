@@ -434,3 +434,14 @@ const CanvasArea = ({
     setPanY(py + (cy - py) * (1 - nz / z));
     setZoom(nz);
   }, []);
+  
+  const cursor = isPanning || spaceDown
+    ? (isPanning ? 'grabbing' : 'grab')
+    : selectedTool === 'eyedropper' ? 'crosshair'
+    : selectedTool === 'eraser' ? 'cell'
+    : selectedTool === 'fill' ? 'crosshair'
+    : 'crosshair';
+
+  return (
+    <main
+      className="canvas-area"
