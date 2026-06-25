@@ -425,3 +425,12 @@ const CanvasArea = ({
   }, [CANVAS_PX]);
 
   const zoomStep = useCallback((factor) => {
+    if (!areaRef.current) return;
+    const { width, height } = areaRef.current.getBoundingClientRect();
+    const { zoom: z, panX: px, panY: py } = viewRef.current;
+    const cx = width / 2, cy = height / 2;
+    const nz = Math.max(0.25, Math.min(20, z * factor));
+    setPanX(px + (cx - px) * (1 - nz / z));
+    setPanY(py + (cy - py) * (1 - nz / z));
+    setZoom(nz);
+  }, []);
