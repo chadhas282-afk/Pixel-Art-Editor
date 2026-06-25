@@ -342,3 +342,14 @@ const CanvasArea = ({
   }, [spaceDown, panX, panY, getCell, selectedTool, frame, selectedColor, setSelectedColor, addRecentColor, GRID_SIZE, commitFrame, paintAt]);
 
   const handleMouseMove = useCallback((e) => {
+    if (isPanning && panStartRef.current) {
+      setPanX(panStartRef.current.panX + (e.clientX - panStartRef.current.x));
+      setPanY(panStartRef.current.panY + (e.clientY - panStartRef.current.y));
+      return;
+    }
+    const cell = getCell(e);
+    setHoverCell(cell);
+    if (!isDrawingRef.current || !cell) return;
+    const { x, y } = cell;
+
+    switch (selectedTool) {
