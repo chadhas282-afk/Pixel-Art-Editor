@@ -372,3 +372,16 @@ const CanvasArea = ({
         break;
       default: break;
     }
+    }, [isPanning, getCell, selectedTool, startCell, GRID_SIZE, paintAt]);
+
+  const handleMouseUp = useCallback((e) => {
+    if (isPanning) {
+      setIsPanning(false); panStartRef.current = null; return;
+    }
+    if (!isDrawingRef.current) return;
+    isDrawingRef.current = false;
+
+    const cell = getCell(e);
+    if (['pencil', 'eraser', 'spray', 'dither'].includes(selectedTool)) {
+      if (strokeFrameRef.current) {
+        commitFrame(strokeFrameRef.current);
