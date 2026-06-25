@@ -28,3 +28,15 @@ const Sidebar = ({
   palette, setPalette,
   recentColors,
   undo, redo, canUndo, canRedo,
+  clearCanvas,
+  brushSize, setBrushSize,
+  symmetryMode, setSymmetryMode,
+  gridSize, onGridSizeChange,
+}) => {
+  const handleAddColor = () => {
+    if (!palette.includes(selectedColor))
+      setPalette(prev => [...prev, selectedColor]);
+  };
+  const handleRemoveColor = (color) => setPalette(prev => prev.filter(c => c !== color));
+
+  return (
