@@ -434,7 +434,7 @@ const CanvasArea = ({
     setPanY(py + (cy - py) * (1 - nz / z));
     setZoom(nz);
   }, []);
-  
+
   const cursor = isPanning || spaceDown
     ? (isPanning ? 'grabbing' : 'grab')
     : selectedTool === 'eyedropper' ? 'crosshair'
@@ -445,3 +445,15 @@ const CanvasArea = ({
   return (
     <main
       className="canvas-area"
+      ref={areaRef}
+      style={{ cursor }}
+      onMouseDown={handleMouseDown}
+      onMouseMove={handleMouseMove}
+      onMouseUp={handleMouseUp}
+      onMouseLeave={handleMouseLeave}
+    >
+      <div className="canvas-toolbar">
+        <button className={`canvas-toggle-btn ${showGrid ? 'active' : ''}`} onClick={() => setShowGrid(g => !g)} data-tooltip="Toggle grid (H)">
+          ⊞ Grid
+        </button>
+        <div className="canvas-toolbar-divider" />
