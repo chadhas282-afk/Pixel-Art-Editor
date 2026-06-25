@@ -57,3 +57,13 @@ const Sidebar = ({
           ))}
         </div>
       </div>
+      <div className="panel-section">
+        <div className="section-label">Brush Size</div>
+        <div className="brush-size-row">
+          {[1, 2, 3, 4, 5].map(size => (
+            <button
+              key={size}
+              className={`brush-size-btn ${brushSize === size ? 'active' : ''}`}
+              onClick={() => setBrushSize(size)}
+              data-tooltip={`Size ${size} (${size === 1 ? '1px' : `${size * 2 - 1}px`})`}
+            >
