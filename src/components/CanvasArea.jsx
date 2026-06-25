@@ -353,3 +353,11 @@ const CanvasArea = ({
     const { x, y } = cell;
 
     switch (selectedTool) {
+      case 'pencil': case 'eraser': case 'spray': case 'dither':
+        paintAt(cell, selectedTool);
+        break;
+      case 'line':
+        if (startCell) setPreviewPixels(bresenhamLine(startCell.x, startCell.y, x, y, GRID_SIZE));
+        break;
+      case 'rectangle':
+        if (startCell) setPreviewPixels(e.shiftKey
