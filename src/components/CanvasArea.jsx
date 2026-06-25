@@ -462,3 +462,15 @@ const CanvasArea = ({
         <button className="canvas-toggle-btn" onClick={() => zoomStep(1.25)}>+</button>
         <button className="canvas-toggle-btn" onClick={resetView} data-tooltip="Fit to screen (0)">Fit</button>
         <div className="canvas-toolbar-divider" />
+        <span className="canvas-info">{GRID_SIZE}×{GRID_SIZE}</span>
+        {selectedTool === 'rectangle' && (
+          <>
+            <div className="canvas-toolbar-divider" />
+            <span className="canvas-info" style={{ color: 'var(--accent-light)' }}>Shift = filled</span>
+          </>
+        )}
+      </div>
+
+      <div
+        style={{
+          position: 'absolute', top: 0, left: 0,
