@@ -405,3 +405,14 @@ const CanvasArea = ({
       const next = applyPixels(frame, mirrored, 'pencil', selectedColor);
       commitFrame(next);
       addRecentColor(selectedColor);
+      }
+    setPreviewPixels([]);
+    setStartCell(null);
+  }, [isPanning, getCell, selectedTool, startCell, frame, selectedColor, symmetryMode, GRID_SIZE, commitFrame, addRecentColor, applyPixels]);
+
+  const handleMouseLeave = useCallback(() => {
+    setHoverCell(null);
+    if (isPanning) { setIsPanning(false); panStartRef.current = null; }
+  }, [isPanning]);
+
+  const resetView = useCallback(() => {
