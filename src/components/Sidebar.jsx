@@ -40,3 +40,10 @@ const Sidebar = ({
   const handleRemoveColor = (color) => setPalette(prev => prev.filter(c => c !== color));
 
   return (
+    <aside className="sidebar panel" style={{ overflowY: 'auto', scrollBehavior: 'smooth' }}>
+      <div className="panel-section">
+        <div className="section-label">Tools</div>
+        <div className="tools-grid">
+          {TOOLS.map(tool => (
+            <button
+              key={tool.id}
