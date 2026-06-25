@@ -17,3 +17,14 @@ const TOOLS = [
 
 const SYMMETRY_OPTIONS = [
   { id: 'none',  label: '✕',  tip: 'No symmetry' },
+  { id: 'x',    label: '↔',  tip: 'Mirror horizontal' },
+  { id: 'y',    label: '↕',  tip: 'Mirror vertical' },
+  { id: 'both', label: '✦',  tip: 'Mirror both axes' },
+];
+
+const Sidebar = ({
+  selectedTool, setSelectedTool,
+  selectedColor, setSelectedColor,
+  palette, setPalette,
+  recentColors,
+  undo, redo, canUndo, canRedo,
