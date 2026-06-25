@@ -486,3 +486,14 @@ const CanvasArea = ({
           ref={canvasRef}
           width={CANVAS_PX}
           height={CANVAS_PX}
+          className="pixel-canvas"
+          style={{ display: 'block', imageRendering: 'pixelated' }}
+        />
+      </div>
+
+      {hoverCell && !isPanning && (
+        <div className="pixel-coords">
+          {hoverCell.x}, {hoverCell.y}
+        </div>
+      )}
+      {zoom < 0.5 && (
