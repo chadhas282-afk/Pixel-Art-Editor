@@ -47,3 +47,13 @@ const Sidebar = ({
           {TOOLS.map(tool => (
             <button
               key={tool.id}
+              className={`tool-btn ${selectedTool === tool.id ? 'active' : ''}`}
+              onClick={() => setSelectedTool(tool.id)}
+              data-tooltip={`${tool.label} (${tool.shortcut})`}
+            >
+              <span className="tool-icon">{tool.icon}</span>
+              <span className="tool-name">{tool.label}</span>
+            </button>
+          ))}
+        </div>
+      </div>
