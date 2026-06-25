@@ -395,3 +395,13 @@ const CanvasArea = ({
       const { x: x0, y: y0 } = startCell;
       const { x: x1, y: y1 } = cell;
       let pixels;
+      if (selectedTool === 'line')           pixels = bresenhamLine(x0, y0, x1, y1, GRID_SIZE);
+      else if (selectedTool === 'rectangle') pixels = e.shiftKey
+        ? getFilledRectPixels(x0, y0, x1, y1, GRID_SIZE)
+        : getRectPixels(x0, y0, x1, y1, GRID_SIZE);
+      else                                   pixels = getEllipsePixels(x0, y0, x1, y1, GRID_SIZE);
+
+      const mirrored = applySymmetry(pixels, symmetryMode, GRID_SIZE);
+      const next = applyPixels(frame, mirrored, 'pencil', selectedColor);
+      commitFrame(next);
+      addRecentColor(selectedColor);
