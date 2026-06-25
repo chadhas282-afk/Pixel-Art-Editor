@@ -329,3 +329,16 @@ const CanvasArea = ({
         isDrawingRef.current = false;
         return;
       }
+      case 'line': case 'rectangle': case 'ellipse':
+        setStartCell({ x, y });
+        return;
+      case 'select':
+        setSelection({ x1: x, y1: y, x2: x, y2: y });
+        return;
+      default:
+        strokeFrameRef.current = [...frame];
+        paintAt(cell, selectedTool);
+    }
+  }, [spaceDown, panX, panY, getCell, selectedTool, frame, selectedColor, setSelectedColor, addRecentColor, GRID_SIZE, commitFrame, paintAt]);
+
+  const handleMouseMove = useCallback((e) => {
