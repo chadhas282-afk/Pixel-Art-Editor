@@ -89,3 +89,13 @@ const Sidebar = ({
               key={opt.id}
               className={`symmetry-btn ${symmetryMode === opt.id ? 'active' : ''}`}
               onClick={() => setSymmetryMode(opt.id)}
+              data-tooltip={opt.tip}
+            >
+              {opt.label}
+            </button>
+          ))}
+        </div>
+      </div>
+      <div className="panel-section">
+        <div className="section-label">Actions</div>
+        <div className="action-row">
