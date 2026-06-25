@@ -99,3 +99,18 @@ const Sidebar = ({
       <div className="panel-section">
         <div className="section-label">Actions</div>
         <div className="action-row">
+            <button className="action-btn" onClick={undo} disabled={!canUndo} data-tooltip="Undo (⌘Z)">↩ Undo</button>
+          <button className="action-btn" onClick={redo} disabled={!canRedo} data-tooltip="Redo (⌘⇧Z)">↪ Redo</button>
+        </div>
+        <button className="action-btn action-btn--danger" style={{ width: '100%', marginTop: 5 }} onClick={clearCanvas}>
+          🗑 Clear Frame
+        </button>
+      </div>
+
+      <div className="panel-section">
+        <div className="section-label">Color</div>
+        <div className="color-swatch-large" style={{ background: selectedColor }}>
+          <input type="color" value={selectedColor} onChange={e => setSelectedColor(e.target.value)} />
+        </div>
+        <div className="color-hex-display">
+          <div className="color-preview-dot" style={{ background: selectedColor }} />
