@@ -474,3 +474,15 @@ const CanvasArea = ({
       <div
         style={{
           position: 'absolute', top: 0, left: 0,
+          transform: `translate(${panX}px, ${panY}px) scale(${zoom})`,
+          transformOrigin: '0 0',
+          borderRadius: 2,
+          overflow: 'hidden',
+          boxShadow: '0 0 0 1px rgba(255,255,255,0.08), 0 12px 60px rgba(0,0,0,0.8)',
+          imageRendering: 'pixelated',
+        }}
+      >
+        <canvas
+          ref={canvasRef}
+          width={CANVAS_PX}
+          height={CANVAS_PX}
