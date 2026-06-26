@@ -67,7 +67,7 @@ const Sidebar = ({
               onClick={() => setBrushSize(size)}
               data-tooltip={`Size ${size} (${size === 1 ? '1px' : `${size * 2 - 1}px`})`}
             >
-                <div className="brush-dot" style={{ width: size * 4 + 2, height: size * 4 + 2 }} />
+              <div className="brush-dot" style={{ width: size * 4 + 2, height: size * 4 + 2 }} />
             </button>
           ))}
           <button
@@ -78,7 +78,7 @@ const Sidebar = ({
           >
             XL
           </button>
-          </div>
+        </div>
       </div>
 
       <div className="panel-section">
@@ -99,7 +99,7 @@ const Sidebar = ({
       <div className="panel-section">
         <div className="section-label">Actions</div>
         <div className="action-row">
-            <button className="action-btn" onClick={undo} disabled={!canUndo} data-tooltip="Undo (⌘Z)">↩ Undo</button>
+          <button className="action-btn" onClick={undo} disabled={!canUndo} data-tooltip="Undo (⌘Z)">↩ Undo</button>
           <button className="action-btn" onClick={redo} disabled={!canRedo} data-tooltip="Redo (⌘⇧Z)">↪ Redo</button>
         </div>
         <button className="action-btn action-btn--danger" style={{ width: '100%', marginTop: 5 }} onClick={clearCanvas}>
@@ -130,7 +130,7 @@ const Sidebar = ({
           <div className="section-label">Recent</div>
           <div className="palette-grid">
             {recentColors.map((color, i) => (
-                <div
+              <div
                 key={i}
                 className={`palette-color ${selectedColor === color ? 'selected' : ''}`}
                 style={{ backgroundColor: color }}
@@ -141,7 +141,7 @@ const Sidebar = ({
           </div>
         </div>
       )}
-            <div className="panel-section palette-panel-section">
+      <div className="panel-section palette-panel-section">
         <div className="section-label" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           Palette
           <select 
@@ -156,7 +156,7 @@ const Sidebar = ({
               e.target.value = 'default';
             }}
             defaultValue="default"
-            >
+          >
             <option value="default" disabled>Load...</option>
             {BUILT_IN_PALETTES.map(p => (
               <option key={p.id} value={p.id}>{p.name}</option>
@@ -188,7 +188,7 @@ const Sidebar = ({
           }}>
             🗑 Clear
           </button>
-          </div>
+        </div>
       </div>
       <div className="panel-section">
         <div className="section-label">Canvas Size</div>
@@ -196,3 +196,11 @@ const Sidebar = ({
           {GRID_SIZES.map(s => (
             <option key={s} value={s}>{s}×{s} pixels</option>
           ))}
+        </select>
+        <p style={{ fontSize: '9px', color: 'var(--text-muted)', marginTop: 5 }}>⚠ Changing size clears canvas</p>
+      </div>
+    </aside>
+  );
+};
+
+export default Sidebar;
