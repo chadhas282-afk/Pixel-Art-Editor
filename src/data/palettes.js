@@ -37,3 +37,13 @@ export const BUILT_IN_PALETTES = [
       '#00e8d8','#787878','#000000','#000000',
       '#fcfcfc','#a4e4fc','#b8b8f8','#d8b8f8',
       '#f8b8f8','#f8a4c0','#f0d0b0','#fce0a8',
+      '#f8d878','#d8f878','#b8f8b8','#b8f8d8',
+      '#00fcfc','#f8d8f8','#000000','#000000',
+    ],
+  },
+  {
+    id: 'cga',
+    name: 'CGA',
+    colors: [
+      '#000000','#0000aa','#00aa00','#00aaaa',
+      '#aa0000','#aa00aa','#aa5500','#aaaaaa',
