@@ -168,3 +168,12 @@ const Sidebar = ({
             {palette.map((color, i) => (
               <div
                 key={i}
+                className={`palette-color ${selectedColor === color ? 'selected' : ''}`}
+                style={{ backgroundColor: color }}
+                onClick={() => setSelectedColor(color)}
+                onContextMenu={e => { e.preventDefault(); handleRemoveColor(color); }}
+                data-tooltip={`${color.toUpperCase()} (right-click to remove)`}
+              />
+            ))}
+          </div>
+        </div>
