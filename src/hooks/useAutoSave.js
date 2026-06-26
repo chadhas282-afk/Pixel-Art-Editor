@@ -20,3 +20,12 @@ export function useAutoSave(data, onRestore) {
       console.warn('AutoSave: failed to restore', e);
     }
   }, []);
+
+  useEffect(() => {
+    if (timerRef.current) clearTimeout(timerRef.current);
+    timerRef.current = setTimeout(() => {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify({
+          ...data,
+          savedAt: new Date().toISOString(),
+        }));
