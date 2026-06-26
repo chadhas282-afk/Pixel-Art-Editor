@@ -188,3 +188,11 @@ const Sidebar = ({
           }}>
             🗑 Clear
           </button>
+          </div>
+      </div>
+      <div className="panel-section">
+        <div className="section-label">Canvas Size</div>
+        <select className="grid-size-select" value={gridSize} onChange={e => onGridSizeChange(Number(e.target.value))}>
+          {GRID_SIZES.map(s => (
+            <option key={s} value={s}>{s}×{s} pixels</option>
+          ))}
