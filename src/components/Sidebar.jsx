@@ -156,3 +156,15 @@ const Sidebar = ({
               e.target.value = 'default';
             }}
             defaultValue="default"
+            >
+            <option value="default" disabled>Load...</option>
+            {BUILT_IN_PALETTES.map(p => (
+              <option key={p.id} value={p.id}>{p.name}</option>
+            ))}
+          </select>
+        </div>
+        <div className="palette-scroll-area">
+          <div className="palette-grid">
+            {palette.map((color, i) => (
+              <div
+                key={i}
