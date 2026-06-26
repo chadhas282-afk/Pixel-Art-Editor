@@ -61,3 +61,17 @@ export const BUILT_IN_PALETTES = [
       '#59c135','#14a02e','#1a7a3e','#24523b',
     ],
   },
+  {
+    id: 'neon',
+    name: 'Neon',
+    colors: [
+      '#0d0221','#0a0538','#190a3a','#1c1f45',
+      '#09e8f0','#0af0a8','#ff2079','#ff00aa',
+      '#ffee00','#ff6200','#8000ff','#5500ff',
+      '#00ff88','#00ffcc','#ff88ff','#ffffff',
+    ],
+  },
+  {
+    id: 'pastel',
+    name: 'Pastel',
+    colors: [
