@@ -10,7 +10,7 @@ export function useAutoSave(data, onRestore) {
     if (!isFirstMount.current) return;
     isFirstMount.current = false;
     try {
-        const raw = localStorage.getItem(STORAGE_KEY);
+      const raw = localStorage.getItem(STORAGE_KEY);
       if (!raw) return;
       const saved = JSON.parse(raw);
       if (saved && saved.frames && saved.gridSize) {
@@ -29,7 +29,7 @@ export function useAutoSave(data, onRestore) {
           ...data,
           savedAt: new Date().toISOString(),
         }));
-        } catch (e) {
+      } catch (e) {
         console.warn('AutoSave: failed to save', e);
       }
     }, DEBOUNCE_MS);
@@ -39,3 +39,19 @@ export function useAutoSave(data, onRestore) {
   const clearSave = useCallback(() => {
     localStorage.removeItem(STORAGE_KEY);
   }, []);
+
+  const saveNow = useCallback((extraData) => {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify({
+        ...data,
+        ...extraData,
+        savedAt: new Date().toISOString(),
+      }));
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }, [data]);
+
+  return { saveNow, clearSave };
+}
