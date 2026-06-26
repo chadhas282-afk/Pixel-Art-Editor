@@ -10,3 +10,10 @@ export const BUILT_IN_PALETTES = [
     ],
   },
   {
+    id: 'gameboy',
+    name: 'Game Boy',
+    colors: ['#0f380f','#306230','#8bac0f','#9bbc0f'],
+  },
+  {
+    id: 'gameboy_pocket',
+    name: 'GB Pocket',
