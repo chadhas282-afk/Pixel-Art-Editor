@@ -141,3 +141,18 @@ const Sidebar = ({
           </div>
         </div>
       )}
+            <div className="panel-section palette-panel-section">
+        <div className="section-label" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          Palette
+          <select 
+            className="grid-size-select" 
+            style={{ width: 'auto', padding: '2px 16px 2px 4px', fontSize: 9, minWidth: 60 }}
+            onChange={e => {
+              if (e.target.value === 'custom') return;
+              const p = BUILT_IN_PALETTES.find(x => x.id === e.target.value);
+              if (p && confirm(`Load "${p.name}" palette? Current colors will be replaced.`)) {
+                setPalette(p.colors);
+              }
+              e.target.value = 'default';
+            }}
+            defaultValue="default"
