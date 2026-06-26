@@ -10,3 +10,13 @@ export function useAutoSave(data, onRestore) {
     if (!isFirstMount.current) return;
     isFirstMount.current = false;
     try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+      if (!raw) return;
+      const saved = JSON.parse(raw);
+      if (saved && saved.frames && saved.gridSize) {
+        onRestore(saved);
+      }
+    } catch (e) {
+      console.warn('AutoSave: failed to restore', e);
+    }
+  }, []);
