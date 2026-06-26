@@ -177,3 +177,14 @@ const Sidebar = ({
             ))}
           </div>
         </div>
+        <div style={{ display: 'flex', gap: '8px', marginTop: 8 }}>
+          <button className="btn-secondary" style={{ flex: 1, padding: '6px 4px', fontSize: '10px' }} onClick={handleAddColor}>
+            + Add Color
+          </button>
+          <button className="btn-secondary" style={{ flex: 1, padding: '6px 4px', fontSize: '10px', color: 'var(--danger)' }} onClick={() => {
+            if (confirm('Are you sure you want to clear the entire palette?')) {
+              setPalette([]);
+            }
+          }}>
+            🗑 Clear
+          </button>
