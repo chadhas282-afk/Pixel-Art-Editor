@@ -75,7 +75,7 @@ export const BUILT_IN_PALETTES = [
     id: 'pastel',
     name: 'Pastel',
     colors: [
-        '#f2d5f8','#d5bbf8','#b8c8f8','#b8e8f8',
+      '#f2d5f8','#d5bbf8','#b8c8f8','#b8e8f8',
       '#b8f8e8','#c8f8c8','#e8f8b8','#f8f0b8',
       '#f8d8b8','#f8c0c0','#c0c0c0','#a0a0b8',
       '#806888','#504058','#302838','#181820',
@@ -85,7 +85,7 @@ export const BUILT_IN_PALETTES = [
     id: 'mono',
     name: 'Monochrome',
     colors: [
-        '#000000','#111111','#222222','#333333',
+      '#000000','#111111','#222222','#333333',
       '#444444','#555555','#666666','#777777',
       '#888888','#999999','#aaaaaa','#bbbbbb',
       '#cccccc','#dddddd','#eeeeee','#ffffff',
@@ -98,3 +98,16 @@ export const BUILT_IN_PALETTES = [
       '#be4a2f','#d77643','#ead4aa','#e4a672',
       '#b86f50','#733e39','#3e2731','#a22633',
       '#e43b44','#f77622','#feae34','#fee761',
+      '#63c74d','#3e8948','#265c42','#193c3e',
+      '#124e89','#0099db','#2ce8f5','#ffffff',
+      '#c0cbdc','#8b9bb4','#5a6988','#3a4466',
+      '#262b44','#181425','#ff0044','#68386c',
+      '#b55088','#f6757a','#e8b796','#c28569',
+    ],
+  },
+  {
+    id: 'custom',
+    name: 'Custom',
+    colors: [],
+  },
+];
