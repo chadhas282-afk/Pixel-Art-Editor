@@ -29,3 +29,13 @@ export function useAutoSave(data, onRestore) {
           ...data,
           savedAt: new Date().toISOString(),
         }));
+        } catch (e) {
+        console.warn('AutoSave: failed to save', e);
+      }
+    }, DEBOUNCE_MS);
+    return () => { if (timerRef.current) clearTimeout(timerRef.current); };
+  }, [data]);
+
+  const clearSave = useCallback(() => {
+    localStorage.removeItem(STORAGE_KEY);
+  }, []);
