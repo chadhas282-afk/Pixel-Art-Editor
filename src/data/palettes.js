@@ -85,3 +85,16 @@ export const BUILT_IN_PALETTES = [
     id: 'mono',
     name: 'Monochrome',
     colors: [
+        '#000000','#111111','#222222','#333333',
+      '#444444','#555555','#666666','#777777',
+      '#888888','#999999','#aaaaaa','#bbbbbb',
+      '#cccccc','#dddddd','#eeeeee','#ffffff',
+    ],
+  },
+  {
+    id: 'endesga32',
+    name: 'ENDESGA-32',
+    colors: [
+      '#be4a2f','#d77643','#ead4aa','#e4a672',
+      '#b86f50','#733e39','#3e2731','#a22633',
+      '#e43b44','#f77622','#feae34','#fee761',
