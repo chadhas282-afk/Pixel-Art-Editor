@@ -17,3 +17,12 @@ export const BUILT_IN_PALETTES = [
   {
     id: 'gameboy_pocket',
     name: 'GB Pocket',
+    colors: ['#1a1612','#544d42','#a8a090','#d8ccc0'],
+  },
+  {
+    id: 'nes',
+    name: 'NES',
+    colors: [
+      '#7c7c7c','#0000fc','#0000bc','#4428bc',
+      '#940084','#a80020','#a81000','#881400',
+      '#503000','#007800','#006800','#005800',
