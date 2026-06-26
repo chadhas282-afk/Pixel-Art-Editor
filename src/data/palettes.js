@@ -75,3 +75,13 @@ export const BUILT_IN_PALETTES = [
     id: 'pastel',
     name: 'Pastel',
     colors: [
+        '#f2d5f8','#d5bbf8','#b8c8f8','#b8e8f8',
+      '#b8f8e8','#c8f8c8','#e8f8b8','#f8f0b8',
+      '#f8d8b8','#f8c0c0','#c0c0c0','#a0a0b8',
+      '#806888','#504058','#302838','#181820',
+    ],
+  },
+  {
+    id: 'mono',
+    name: 'Monochrome',
+    colors: [
