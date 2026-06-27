@@ -44,3 +44,9 @@ export function floodFill(frame, index, fillColor, gridSize) {
   const newFrame = [...frame];
   const stack = [index];
   const visited = new Set();
+  while (stack.length > 0) {
+    const curr = stack.pop();
+    if (visited.has(curr)) continue;
+    visited.add(curr);
+    if (newFrame[curr] !== targetColor) continue;
+    newFrame[curr] = fillColor;
