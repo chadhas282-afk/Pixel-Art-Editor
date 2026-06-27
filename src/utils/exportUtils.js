@@ -12,3 +12,17 @@ export const exportFramePNG = (frames, currentFrameIndex, gridSize, scale, bgCol
   const ctx = tmp.getContext('2d');
   ctx.imageSmoothingEnabled = false;
   
+    if (bgColor !== 'transparent') {
+    ctx.fillStyle = bgColor;
+    ctx.fillRect(0, 0, tmp.width, tmp.height);
+  }
+  
+  const frame = frames[currentFrameIndex];
+  frame.forEach((color, i) => {
+    if (!color) return;
+    ctx.fillStyle = color;
+    ctx.fillRect((i % gridSize) * scale, Math.floor(i / gridSize) * scale, scale, scale);
+  });
+  
+  download(tmp.toDataURL('image/png'), `frame-${currentFrameIndex + 1}.png`);
+};
