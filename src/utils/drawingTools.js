@@ -152,3 +152,11 @@ export function flipFrameV(frame, gridSize) {
     }
   return newFrame;
 }
+
+export function rotateFrame90(frame, gridSize) {
+  const newFrame = new Array(gridSize * gridSize).fill(null);
+  for (let y = 0; y < gridSize; y++)
+    for (let x = 0; x < gridSize; x++)
+      newFrame[x * gridSize + (gridSize - 1 - y)] = frame[y * gridSize + x];
+  return newFrame;
+}
