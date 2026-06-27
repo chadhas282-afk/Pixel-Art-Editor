@@ -123,3 +123,12 @@ export function getEllipsePixels(x0, y0, x1, y1, gridSize) {
   const addPt = (x, y) => {
     const px = Math.round(x), py = Math.round(y);
     if (px >= 0 && px < gridSize && py >= 0 && py < gridSize)
+        pixels.add(py * gridSize + px);
+  };
+  const steps = Math.max(rx, ry) * Math.PI * 4;
+  for (let i = 0; i <= steps; i++) {
+    const angle = (i / steps) * Math.PI * 2;
+    addPt(cx + Math.cos(angle) * rx, cy + Math.sin(angle) * ry);
+  }
+  return [...pixels];
+}
