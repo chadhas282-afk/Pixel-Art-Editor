@@ -72,3 +72,9 @@ export function getBrushPixels(cx, cy, brushSize, gridSize) {
   }
   return [...new Set(pixels)];
 }
+
+export function applySymmetry(pixels, symmetryMode, gridSize) {
+  if (symmetryMode === 'none') return pixels;
+  const result = new Set(pixels);
+  pixels.forEach(idx => {
+    const x = idx % gridSize, y = Math.floor(idx / gridSize);
