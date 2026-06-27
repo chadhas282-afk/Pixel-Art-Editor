@@ -114,3 +114,12 @@ export function getDitherPixels(cx, cy, brushSize, gridSize) {
     }
     return pixels;
 }
+
+export function getEllipsePixels(x0, y0, x1, y1, gridSize) {
+  const pixels = new Set();
+  const cx = (x0 + x1) / 2, cy = (y0 + y1) / 2;
+  const rx = Math.abs(x1 - x0) / 2, ry = Math.abs(y1 - y0) / 2;
+  if (rx === 0 && ry === 0) { pixels.add(Math.round(cy) * gridSize + Math.round(cx)); return [...pixels]; }
+  const addPt = (x, y) => {
+    const px = Math.round(x), py = Math.round(y);
+    if (px >= 0 && px < gridSize && py >= 0 && py < gridSize)
