@@ -160,3 +160,13 @@ export function rotateFrame90(frame, gridSize) {
       newFrame[x * gridSize + (gridSize - 1 - y)] = frame[y * gridSize + x];
   return newFrame;
 }
+
+export function renderFrame(ctx, frame, gridSize, bgColor = null) {
+  if (bgColor) { ctx.fillStyle = bgColor; ctx.fillRect(0, 0, gridSize, gridSize); }
+  else { ctx.clearRect(0, 0, gridSize, gridSize); }
+  frame.forEach((color, i) => {
+    if (!color) return;
+    ctx.fillStyle = color;
+    ctx.fillRect(i % gridSize, Math.floor(i / gridSize), 1, 1);
+  });
+}
