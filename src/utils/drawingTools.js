@@ -91,3 +91,12 @@ export function getSprayPixels(cx, cy, brushSize, gridSize) {
   const r = Math.max(2, brushSize * 2);
   const count = Math.max(6, brushSize * 8);
   for (let i = 0; i < count; i++) {
+    const angle = Math.random() * Math.PI * 2;
+    const dist = Math.random() * r;
+    const nx = cx + Math.round(Math.cos(angle) * dist);
+    const ny = cy + Math.round(Math.sin(angle) * dist);
+    if (nx >= 0 && nx < gridSize && ny >= 0 && ny < gridSize)
+      pixels.add(ny * gridSize + nx);
+  }
+  return [...pixels];
+}
