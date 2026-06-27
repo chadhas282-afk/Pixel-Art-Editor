@@ -14,3 +14,10 @@ export function bresenhamLine(x0, y0, x1, y1, gridSize) {
   }
   return pixels;
 }
+
+export function getRectPixels(x0, y0, x1, y1, gridSize) {
+  const pixels = new Set();
+  const minX = Math.max(0, Math.min(x0, x1)), maxX = Math.min(gridSize - 1, Math.max(x0, x1));
+  const minY = Math.max(0, Math.min(y0, y1)), maxY = Math.min(gridSize - 1, Math.max(y0, y1));
+  for (let y = minY; y <= maxY; y++) {
+    for (let x = minX; x <= maxX; x++) {
