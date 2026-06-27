@@ -132,3 +132,13 @@ export function getEllipsePixels(x0, y0, x1, y1, gridSize) {
   }
   return [...pixels];
 }
+
+export function flipFrameH(frame, gridSize) {
+  const newFrame = [...frame];
+  for (let y = 0; y < gridSize; y++)
+    for (let x = 0; x < Math.floor(gridSize / 2); x++) {
+      const l = y * gridSize + x, r = y * gridSize + (gridSize - 1 - x);
+      [newFrame[l], newFrame[r]] = [newFrame[r], newFrame[l]];
+    }
+  return newFrame;
+}
