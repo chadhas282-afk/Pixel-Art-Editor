@@ -63,3 +63,12 @@ export function getBrushPixels(cx, cy, brushSize, gridSize) {
   const pixels = [];
   const r = brushSize - 1;
   for (let dy = -r; dy <= r; dy++) {
+    for (let dx = -r; dx <= r; dx++) {
+      if (r > 1 && dx * dx + dy * dy > r * r + 0.5) continue;
+      const nx = cx + dx, ny = cy + dy;
+      if (nx >= 0 && nx < gridSize && ny >= 0 && ny < gridSize)
+        pixels.push(ny * gridSize + nx);
+    }
+  }
+  return [...new Set(pixels)];
+}
