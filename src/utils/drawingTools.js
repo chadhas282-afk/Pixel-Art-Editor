@@ -100,3 +100,9 @@ export function getSprayPixels(cx, cy, brushSize, gridSize) {
   }
   return [...pixels];
 }
+
+export function getDitherPixels(cx, cy, brushSize, gridSize) {
+  const pixels = [];
+  const r = brushSize - 1;
+  for (let dy = -r; dy <= r; dy++) {
+    for (let dx = -r; dx <= r; dx++) {
