@@ -78,3 +78,10 @@ export function applySymmetry(pixels, symmetryMode, gridSize) {
   const result = new Set(pixels);
   pixels.forEach(idx => {
     const x = idx % gridSize, y = Math.floor(idx / gridSize);
+    const mx = gridSize - 1 - x, my = gridSize - 1 - y;
+    if (symmetryMode === 'x' || symmetryMode === 'both') result.add(y * gridSize + mx);
+    if (symmetryMode === 'y' || symmetryMode === 'both') result.add(my * gridSize + x);
+    if (symmetryMode === 'both') result.add(my * gridSize + mx);
+  });
+  return [...result];
+}
