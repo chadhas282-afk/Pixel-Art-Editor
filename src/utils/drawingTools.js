@@ -5,3 +5,12 @@ export function bresenhamLine(x0, y0, x1, y1, gridSize) {
   let err = dx + dy;
   let cx = x0, cy = y0;
   while (true) {
+    if (cx >= 0 && cx < gridSize && cy >= 0 && cy < gridSize)
+      pixels.push(cy * gridSize + cx);
+    if (cx === x1 && cy === y1) break;
+    const e2 = 2 * err;
+    if (e2 >= dy) { err += dy; cx += sx; }
+    if (e2 <= dx) { err += dx; cy += sy; }
+  }
+  return pixels;
+}
