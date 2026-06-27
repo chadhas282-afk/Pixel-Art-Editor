@@ -142,3 +142,13 @@ export function flipFrameH(frame, gridSize) {
     }
   return newFrame;
 }
+
+export function flipFrameV(frame, gridSize) {
+  const newFrame = [...frame];
+  for (let y = 0; y < Math.floor(gridSize / 2); y++)
+    for (let x = 0; x < gridSize; x++) {
+      const t = y * gridSize + x, b = (gridSize - 1 - y) * gridSize + x;
+      [newFrame[t], newFrame[b]] = [newFrame[b], newFrame[t]];
+    }
+  return newFrame;
+}
