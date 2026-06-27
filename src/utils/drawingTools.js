@@ -37,3 +37,10 @@ export function getFilledRectPixels(x0, y0, x1, y1, gridSize) {
       pixels.push(y * gridSize + x);
   return pixels;
 }
+
+export function floodFill(frame, index, fillColor, gridSize) {
+  const targetColor = frame[index];
+  if (targetColor === fillColor) return frame;
+  const newFrame = [...frame];
+  const stack = [index];
+  const visited = new Set();
