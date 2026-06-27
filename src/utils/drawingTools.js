@@ -54,3 +54,12 @@ export function floodFill(frame, index, fillColor, gridSize) {
     if (x > 0) stack.push(curr - 1);
     if (x < gridSize - 1) stack.push(curr + 1);
     if (y > 0) stack.push(curr - gridSize);
+    if (y < gridSize - 1) stack.push(curr + gridSize);
+  }
+  return newFrame;
+}
+
+export function getBrushPixels(cx, cy, brushSize, gridSize) {
+  const pixels = [];
+  const r = brushSize - 1;
+  for (let dy = -r; dy <= r; dy++) {
