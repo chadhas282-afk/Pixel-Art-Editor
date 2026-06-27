@@ -50,3 +50,7 @@ export function floodFill(frame, index, fillColor, gridSize) {
     visited.add(curr);
     if (newFrame[curr] !== targetColor) continue;
     newFrame[curr] = fillColor;
+    const x = curr % gridSize, y = Math.floor(curr / gridSize);
+    if (x > 0) stack.push(curr - 1);
+    if (x < gridSize - 1) stack.push(curr + 1);
+    if (y > 0) stack.push(curr - gridSize);
