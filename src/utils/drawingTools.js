@@ -85,3 +85,9 @@ export function applySymmetry(pixels, symmetryMode, gridSize) {
   });
   return [...result];
 }
+
+export function getSprayPixels(cx, cy, brushSize, gridSize) {
+  const pixels = new Set();
+  const r = Math.max(2, brushSize * 2);
+  const count = Math.max(6, brushSize * 8);
+  for (let i = 0; i < count; i++) {
