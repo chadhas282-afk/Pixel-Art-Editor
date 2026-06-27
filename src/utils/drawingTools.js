@@ -21,3 +21,12 @@ export function getRectPixels(x0, y0, x1, y1, gridSize) {
   const minY = Math.max(0, Math.min(y0, y1)), maxY = Math.min(gridSize - 1, Math.max(y0, y1));
   for (let y = minY; y <= maxY; y++) {
     for (let x = minX; x <= maxX; x++) {
+        if (x === minX || x === maxX || y === minY || y === maxY)
+        pixels.add(y * gridSize + x);
+    }
+  }
+  return [...pixels];
+}
+
+export function getFilledRectPixels(x0, y0, x1, y1, gridSize) {
+  const pixels = [];
