@@ -12,7 +12,7 @@ export const exportFramePNG = (frames, currentFrameIndex, gridSize, scale, bgCol
   const ctx = tmp.getContext('2d');
   ctx.imageSmoothingEnabled = false;
   
-    if (bgColor !== 'transparent') {
+  if (bgColor !== 'transparent') {
     ctx.fillStyle = bgColor;
     ctx.fillRect(0, 0, tmp.width, tmp.height);
   }
@@ -26,6 +26,7 @@ export const exportFramePNG = (frames, currentFrameIndex, gridSize, scale, bgCol
   
   download(tmp.toDataURL('image/png'), `frame-${currentFrameIndex + 1}.png`);
 };
+
 export const exportSpritesheet = (frames, gridSize, scale, bgColor) => {
   const tmp = document.createElement('canvas');
   tmp.width = gridSize * frames.length * scale; 
@@ -67,3 +68,12 @@ export const exportAllFrames = (frames, gridSize, scale, bgColor) => {
       ctx.fillStyle = color;
       ctx.fillRect((i % gridSize) * scale, Math.floor(i / gridSize) * scale, scale, scale);
     });
+    
+    setTimeout(() => download(tmp.toDataURL('image/png'), `frame-${String(fi + 1).padStart(3, '0')}.png`), fi * 80);
+  });
+};
+
+export const exportJSON = (frames, gridSize, fps, projectName, palette) => {
+  const blob = new Blob([JSON.stringify({ projectName, frames, gridSize, fps, palette }, null, 2)], { type: 'application/json' });
+  download(URL.createObjectURL(blob), `${projectName.replace(/\s+/g, '-').toLowerCase() || 'pixel-art'}.json`);
+};
