@@ -95,3 +95,15 @@ function quantizeFrame(frame, bgColor) {
 
   return { indices, palette, colorDepth };
 }
+
+function hexToRGB(hex) {
+  return [
+    parseInt(hex.slice(1, 3), 16),
+    parseInt(hex.slice(3, 5), 16),
+    parseInt(hex.slice(5, 7), 16),
+  ];
+}
+
+export function encodeGIF(frames, gridSize, fps, scale = 4, bgColor = 'transparent') {
+  const w = gridSize * scale;
+  const h = gridSize * scale;
