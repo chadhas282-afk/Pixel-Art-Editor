@@ -48,3 +48,13 @@ function writeSubBlocks(bytes) {
   out.push(0);
   return out;
 }
+
+function quantizeFrame(frame, bgColor) {
+  const colorMap = new Map();
+  const transparent = bgColor === 'transparent';
+  if (transparent) {
+    colorMap.set('transparent', 0);
+  } else {
+    colorMap.set(bgColor.toLowerCase(), 0);
+  }
+  let nextIndex = 1;
