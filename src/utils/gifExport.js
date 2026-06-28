@@ -20,3 +20,10 @@ function lzwEncode(indexStream, colorDepth) {
   reset();
   emit(clearCode);
   let prefix = '';
+  for (let i = 0; i < indexStream.length; i++) {
+    const k = String(indexStream[i]);
+    const pk = prefix ? prefix + ',' + k : k;
+    if (table.has(pk)) { prefix = pk; continue; }
+    emit(table.get(prefix !== '' ? prefix : k));
+    const nextCode = table.size;
+    if (nextCode < 4096) { table.set(pk, nextCode); }
