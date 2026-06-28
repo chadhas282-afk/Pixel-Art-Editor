@@ -107,3 +107,16 @@ function hexToRGB(hex) {
 export function encodeGIF(frames, gridSize, fps, scale = 4, bgColor = 'transparent') {
   const w = gridSize * scale;
   const h = gridSize * scale;
+  const delay = Math.round(100 / fps);
+  const transparent = bgColor === 'transparent';
+  const bytes = [];
+
+  const push = (...vals) => bytes.push(...vals);
+  const pushStr = (s) => { for (let i = 0; i < s.length; i++) bytes.push(s.charCodeAt(i)); };
+  const pushU16LE = (v) => { bytes.push(v & 0xff, (v >> 8) & 0xff); };
+  pushStr('GIF89a');
+  const globalColorSet = new Set();
+  frames.forEach(frame => frame.forEach(c => { if (c) globalColorSet.add(c.toLowerCase()); }));
+  const globalColors = [...globalColorSet].slice(0, 255);
+  const globalColorMap = new Map();
+  if (transparent) { globalColorMap.set('transparent', 0); }
