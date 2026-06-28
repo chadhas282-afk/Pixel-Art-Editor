@@ -83,3 +83,15 @@ function quantizeFrame(frame, bgColor) {
     const b = parseInt(bgColor.slice(5, 7), 16);
     palette[0] = r; palette[1] = g; palette[2] = b;
   }
+
+  colorMap.forEach((idx, key) => {
+    if (idx === 0) return;
+    if (key === 'transparent') return;
+    const r = parseInt(key.slice(1, 3), 16);
+    const g = parseInt(key.slice(3, 5), 16);
+    const b = parseInt(key.slice(5, 7), 16);
+    palette[idx * 3] = r; palette[idx * 3 + 1] = g; palette[idx * 3 + 2] = b;
+  });
+
+  return { indices, palette, colorDepth };
+}
