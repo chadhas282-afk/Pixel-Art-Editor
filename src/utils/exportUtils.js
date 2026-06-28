@@ -34,3 +34,11 @@ export const exportSpritesheet = (frames, gridSize, scale, bgColor) => {
   ctx.imageSmoothingEnabled = false;
   
   if (bgColor !== 'transparent') {
+    ctx.fillStyle = bgColor;
+    ctx.fillRect(0, 0, tmp.width, tmp.height);
+  }
+  
+  frames.forEach((frame, fi) => {
+    frame.forEach((color, i) => {
+      if (!color) return;
+      ctx.fillStyle = color;
