@@ -27,3 +27,12 @@ function lzwEncode(indexStream, colorDepth) {
     emit(table.get(prefix !== '' ? prefix : k));
     const nextCode = table.size;
     if (nextCode < 4096) { table.set(pk, nextCode); }
+    if (nextCode >= maxCode && codeSize < 12) { codeSize++; maxCode <<= 1; }
+    if (nextCode >= 4096) { emit(clearCode); reset(); }
+    prefix = k;
+  }
+  if (prefix !== '') emit(table.get(prefix));
+  emit(eofCode);
+  if (bufBits > 0) output.push(buf & 0xff);
+  return output;
+}
