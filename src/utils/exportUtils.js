@@ -26,3 +26,11 @@ export const exportFramePNG = (frames, currentFrameIndex, gridSize, scale, bgCol
   
   download(tmp.toDataURL('image/png'), `frame-${currentFrameIndex + 1}.png`);
 };
+export const exportSpritesheet = (frames, gridSize, scale, bgColor) => {
+  const tmp = document.createElement('canvas');
+  tmp.width = gridSize * frames.length * scale; 
+  tmp.height = gridSize * scale;
+  const ctx = tmp.getContext('2d');
+  ctx.imageSmoothingEnabled = false;
+  
+  if (bgColor !== 'transparent') {
