@@ -150,3 +150,17 @@ export function encodeGIF(frames, gridSize, fps, scale = 4, bgColor = 'transpare
         indexStream[py * w + px] = idx;
       }
     }
+
+    push(0x21, 0xf9, 0x04);
+    const disposeMethod = transparent ? 2 : 0;
+    push((disposeMethod << 2) | (transparent ? 1 : 0));
+    pushU16LE(delay);
+    push(transparent ? 0 : 0, 0);
+    push(0x2c);
+    pushU16LE(0); pushU16LE(0); pushU16LE(w); pushU16LE(h);
+    push(0);
+    push(Math.max(2, gColorDepth));
+    const lzw = lzwEncode(indexStream, Math.max(2, gColorDepth));
+    const subBlocks = writeSubBlocks(lzw);
+    bytes.push(...subBlocks);
+  });
