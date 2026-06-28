@@ -74,3 +74,12 @@ function quantizeFrame(frame, bgColor) {
   while ((1 << colorDepth) < numColors) colorDepth++;
   const paletteSize = 1 << colorDepth;
   const palette = new Uint8Array(paletteSize * 3);
+
+  if (transparent) {
+    palette[0] = 0; palette[1] = 0; palette[2] = 0;
+  } else {
+    const r = parseInt(bgColor.slice(1, 3), 16);
+    const g = parseInt(bgColor.slice(3, 5), 16);
+    const b = parseInt(bgColor.slice(5, 7), 16);
+    palette[0] = r; palette[1] = g; palette[2] = b;
+  }
