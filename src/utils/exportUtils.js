@@ -59,3 +59,11 @@ export const exportAllFrames = (frames, gridSize, scale, bgColor) => {
     
     if (bgColor !== 'transparent') {
       ctx.fillStyle = bgColor;
+      ctx.fillRect(0, 0, tmp.width, tmp.height);
+    }
+    
+    frame.forEach((color, i) => {
+      if (!color) return;
+      ctx.fillStyle = color;
+      ctx.fillRect((i % gridSize) * scale, Math.floor(i / gridSize) * scale, scale, scale);
+    });
