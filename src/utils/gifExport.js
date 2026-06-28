@@ -135,3 +135,18 @@ export function encodeGIF(frames, gridSize, fps, scale = 4, bgColor = 'transpare
   pushU16LE(w); pushU16LE(h);
   const packed = 0x80 | ((gColorDepth - 1) << 4) | (gColorDepth - 1);
   push(packed, 0, 0); 
+  for (let i = 0; i < gPalette.length; i++) push(gPalette[i]);
+  pushStr('\x21\xff\x0bNETSCAPE2.0');
+  push(3, 1); pushU16LE(0); push(0);
+  frames.forEach(frame => {
+    const indexStream = new Array(w * h);
+    for (let py = 0; py < h; py++) {
+      for (let px = 0; px < w; px++) {
+        const gx = Math.floor(px / scale);
+        const gy = Math.floor(py / scale);
+        const cell = frame[gy * gridSize + gx];
+        const key = cell ? cell.toLowerCase() : 'transparent';
+        const idx = globalColorMap.has(key) ? globalColorMap.get(key) : 0;
+        indexStream[py * w + px] = idx;
+      }
+    }
