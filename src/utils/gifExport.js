@@ -58,3 +58,13 @@ function quantizeFrame(frame, bgColor) {
     colorMap.set(bgColor.toLowerCase(), 0);
   }
   let nextIndex = 1;
+
+  const indices = frame.map(color => {
+    if (!color) return 0;
+    const key = color.toLowerCase();
+    if (!colorMap.has(key)) {
+      if (nextIndex < 256) colorMap.set(key, nextIndex++);
+      else return colorMap.get(key) ?? 0;
+    }
+    return colorMap.get(key);
+  });
