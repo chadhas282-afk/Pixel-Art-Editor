@@ -120,3 +120,18 @@ export function encodeGIF(frames, gridSize, fps, scale = 4, bgColor = 'transpare
   const globalColors = [...globalColorSet].slice(0, 255);
   const globalColorMap = new Map();
   if (transparent) { globalColorMap.set('transparent', 0); }
+  else { globalColorMap.set(bgColor.toLowerCase(), 0); }
+  globalColors.forEach((c, i) => globalColorMap.set(c, i + 1));
+
+  let gColorDepth = 1;
+  while ((1 << gColorDepth) < globalColorMap.size + 1) gColorDepth++;
+  const gPaletteSize = 1 << gColorDepth;
+  const gPalette = new Uint8Array(gPaletteSize * 3);
+  globalColorMap.forEach((idx, key) => {
+    if (idx === 0 || key === 'transparent') return;
+    const [r, g, b] = hexToRGB(key);
+    gPalette[idx * 3] = r; gPalette[idx * 3 + 1] = g; gPalette[idx * 3 + 2] = b;
+  });
+  pushU16LE(w); pushU16LE(h);
+  const packed = 0x80 | ((gColorDepth - 1) << 4) | (gColorDepth - 1);
+  push(packed, 0, 0); 
