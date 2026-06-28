@@ -36,3 +36,15 @@ function lzwEncode(indexStream, colorDepth) {
   if (bufBits > 0) output.push(buf & 0xff);
   return output;
 }
+
+function writeSubBlocks(bytes) {
+  const out = [];
+  let i = 0;
+  while (i < bytes.length) {
+    const len = Math.min(255, bytes.length - i);
+    out.push(len);
+    for (let j = 0; j < len; j++) out.push(bytes[i++]);
+  }
+  out.push(0);
+  return out;
+}
