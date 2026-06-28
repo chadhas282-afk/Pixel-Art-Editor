@@ -164,3 +164,16 @@ export function encodeGIF(frames, gridSize, fps, scale = 4, bgColor = 'transpare
     const subBlocks = writeSubBlocks(lzw);
     bytes.push(...subBlocks);
   });
+
+  push(0x3b);
+
+  return new Uint8Array(bytes);
+}
+
+export function downloadGIF(frames, gridSize, fps, scale = 4, bgColor = 'transparent', filename = 'animation.gif') {
+  const data = encodeGIF(frames, gridSize, fps, scale, bgColor);
+  const blob = new Blob([data], { type: 'image/gif' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a'); a.href = url; a.download = filename; a.click();
+  setTimeout(() => URL.revokeObjectURL(url), 2000);
+}
