@@ -13,3 +13,10 @@ function lzwEncode(indexStream, colorDepth) {
   };
   const reset = () => {
     table.clear();
+    codeSize = colorDepth + 1;
+    maxCode = 1 << codeSize;
+    for (let i = 0; i < clearCode; i++) table.set(String(i), i);
+  };
+  reset();
+  emit(clearCode);
+  let prefix = '';
