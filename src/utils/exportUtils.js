@@ -51,3 +51,11 @@ export const exportSpritesheet = (frames, gridSize, scale, bgColor) => {
 
 export const exportAllFrames = (frames, gridSize, scale, bgColor) => {
   frames.forEach((frame, fi) => {
+    const tmp = document.createElement('canvas');
+    tmp.width = gridSize * scale; 
+    tmp.height = gridSize * scale;
+    const ctx = tmp.getContext('2d');
+    ctx.imageSmoothingEnabled = false;
+    
+    if (bgColor !== 'transparent') {
+      ctx.fillStyle = bgColor;
