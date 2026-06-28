@@ -68,3 +68,9 @@ function quantizeFrame(frame, bgColor) {
     }
     return colorMap.get(key);
   });
+
+  const numColors = Math.max(2, nextIndex);
+  let colorDepth = 1;
+  while ((1 << colorDepth) < numColors) colorDepth++;
+  const paletteSize = 1 << colorDepth;
+  const palette = new Uint8Array(paletteSize * 3);
