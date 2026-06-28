@@ -42,3 +42,12 @@ export const exportSpritesheet = (frames, gridSize, scale, bgColor) => {
     frame.forEach((color, i) => {
       if (!color) return;
       ctx.fillStyle = color;
+      ctx.fillRect((fi * gridSize + (i % gridSize)) * scale, Math.floor(i / gridSize) * scale, scale, scale);
+    });
+  });
+  
+  download(tmp.toDataURL('image/png'), `spritesheet-${gridSize}x${gridSize}-${frames.length}f.png`);
+};
+
+export const exportAllFrames = (frames, gridSize, scale, bgColor) => {
+  frames.forEach((frame, fi) => {
