@@ -22,3 +22,17 @@
   --text-primary:   #f0f2ff;
   --text-secondary: #9ba3c4;
   --text-muted:     #5a6180;
+    --shadow-sm:   0 1px 3px rgba(0,0,0,0.4);
+  --shadow-md:   0 4px 16px rgba(0,0,0,0.5);
+  --shadow-lg:   0 8px 32px rgba(0,0,0,0.6);
+  --shadow-accent: 0 0 20px rgba(108,99,255,0.3);
+  --font-sans:  'Inter', system-ui, sans-serif;
+  --font-mono:  'JetBrains Mono', 'Fira Code', monospace;
+  --radius-sm:  4px;
+  --radius-md:  8px;
+  --radius-lg:  12px;
+  --radius-xl:  16px;
+  --t-fast:   120ms ease;
+  --t-normal: 200ms ease;
+  --t-slow:   350ms ease;
+}
