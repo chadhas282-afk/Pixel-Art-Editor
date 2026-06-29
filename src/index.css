@@ -381,3 +381,19 @@ html, body {
   cursor: pointer;
   opacity: 0;
 }
+
+.color-hex-display {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.color-preview-dot {
+  width: 20px;
+  height: 20px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-default);
+  flex-shrink: 0;
+  transition: all var(--t-fast);
+}
