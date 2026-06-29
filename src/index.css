@@ -208,3 +208,19 @@ html, body {
   background: var(--border-strong);
   border-radius: 2px;
 }
+.palette-scroll-area {
+  overscroll-behavior: contain;
+}
+
+.tools-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5px;
+}
+
+.tool-btn {
+  position: relative;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+  color: var(--text-secondary);
