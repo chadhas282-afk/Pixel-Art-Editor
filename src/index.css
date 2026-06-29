@@ -236,3 +236,16 @@ html, body {
   transition: all var(--t-fast);
   outline: none;
 }
+
+.tool-btn:hover {
+  background: var(--bg-hover);
+  border-color: var(--border-strong);
+  color: var(--text-primary);
+}
+
+.tool-btn.active {
+  background: var(--accent-dim);
+  border-color: var(--accent);
+  color: var(--accent-light);
+  box-shadow: inset 0 0 0 1px var(--accent-dim), var(--shadow-accent);
+}
