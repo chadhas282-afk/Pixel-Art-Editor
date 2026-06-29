@@ -98,3 +98,23 @@ html, body {
   overflow-y: auto;
   padding: 12px 14px;
 }
+
+.panel-section--scrollable::-webkit-scrollbar {
+  width: 4px;
+}
+.panel-section--scrollable::-webkit-scrollbar-track {
+  background: transparent;
+}
+.panel-section--scrollable::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: 2px;
+}
+
+.section-label {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+}
