@@ -175,3 +175,21 @@ html, body {
   scrollbar-width: none;       
   -ms-overflow-style: none; 
 }
+.sidebar::-webkit-scrollbar { display: none; } 
+.palette-panel-section {
+}
+
+.palette-scroll-area {
+  position: relative;
+  max-height: 160px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  border-radius: var(--radius-md);
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    black 0%,
+    black 70%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
