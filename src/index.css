@@ -397,3 +397,16 @@ html, body {
   flex-shrink: 0;
   transition: all var(--t-fast);
 }
+
+.color-hex-value {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-secondary);
+  letter-spacing: 0.05em;
+}
+
+.palette-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 4px;
+}
