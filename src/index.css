@@ -193,3 +193,18 @@ html, body {
     transparent 100%
   );
   mask-image: linear-gradient(
+    to bottom,
+    black 0%,
+    black 70%,
+    transparent 100%
+  );
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-strong) transparent;
+}
+
+.palette-scroll-area::-webkit-scrollbar { width: 3px; }
+.palette-scroll-area::-webkit-scrollbar-track { background: transparent; }
+.palette-scroll-area::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: 2px;
+}
