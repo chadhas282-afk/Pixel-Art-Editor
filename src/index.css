@@ -68,3 +68,17 @@ html, body {
   background: var(--bg-deep);
   overflow: hidden;
 }
+
+.panel {
+  background: var(--bg-panel);
+  border-right: 1px solid var(--border-subtle);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.panel--right {
+  border-right: none;
+  border-left: 1px solid var(--border-subtle);
+}
