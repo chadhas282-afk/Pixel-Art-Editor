@@ -36,3 +36,15 @@
   --t-normal: 200ms ease;
   --t-slow:   350ms ease;
 }
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  background: var(--bg-deep);
