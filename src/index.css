@@ -82,3 +82,19 @@ html, body {
   border-right: none;
   border-left: 1px solid var(--border-subtle);
 }
+
+.panel-section {
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--border-subtle);
+  flex-shrink: 0;
+}
+
+.panel-section:last-child {
+  border-bottom: none;
+}
+
+.panel-section--scrollable {
+  flex: 1;
+  overflow-y: auto;
+  padding: 12px 14px;
+}
