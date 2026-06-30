@@ -493,3 +493,17 @@ html, body {
   align-items: center;
   gap: 4px;
 }
+
+.canvas-toggle-btn:hover,
+.canvas-toggle-btn.active {
+  background: var(--accent-dim);
+  border-color: var(--accent);
+  color: var(--accent-light);
+}
+
+.canvas-wrapper {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg), 0 0 60px rgba(0,0,0,0.8);
+}
