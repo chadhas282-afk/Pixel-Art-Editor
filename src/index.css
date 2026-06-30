@@ -713,3 +713,23 @@ input[type="range"]::-webkit-slider-thumb:active {
   color: var(--text-muted);
   font-family: var(--font-mono);
 }
+
+.frame-delete-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 3px;
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  opacity: 0;
+  transition: all var(--t-fast);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.frame-item:hover .frame-delete-btn {
+  opacity: 1;
+}
