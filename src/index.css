@@ -410,3 +410,13 @@ html, body {
   grid-template-columns: repeat(5, 1fr);
   gap: 4px;
 }
+
+.palette-color {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  transition: all var(--t-fast);
+  position: relative;
+}
