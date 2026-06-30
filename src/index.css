@@ -525,3 +525,21 @@ html, body {
   background-size: 16px 16px;
   background-position: 0 0, 0 8px, 8px -8px, -8px 0px;
 }
+
+.timeline {
+  width: 220px;
+  padding-top: 44px;
+}
+
+.preview-box {
+  width: 100%;
+  aspect-ratio: 1;
+  background: #0a0c10;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-default);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
