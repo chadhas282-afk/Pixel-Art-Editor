@@ -577,3 +577,22 @@ html, body {
   background: var(--bg-hover);
   color: var(--text-primary);
 }
+
+.playback-btn.playing {
+  background: var(--accent-dim);
+  border-color: var(--accent);
+  color: var(--accent-light);
+}
+
+.fps-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.fps-label {
+  font-size: 11px;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
