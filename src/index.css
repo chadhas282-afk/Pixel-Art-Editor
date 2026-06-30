@@ -698,3 +698,18 @@ input[type="range"]::-webkit-slider-thumb:active {
   flex: 1;
   min-width: 0;
 }
+
+.frame-name {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.frame-index {
+  font-size: 9px;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+}
