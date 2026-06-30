@@ -463,3 +463,17 @@ html, body {
   box-shadow: var(--shadow-md);
   z-index: 5;
 }
+
+.canvas-toolbar-divider {
+  width: 1px;
+  height: 20px;
+  background: var(--border-default);
+  margin: 0 2px;
+}
+
+.canvas-info {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+}
