@@ -733,3 +733,14 @@ input[type="range"]::-webkit-slider-thumb:active {
 .frame-item:hover .frame-delete-btn {
   opacity: 1;
 }
+
+.frame-delete-btn:hover {
+  background: var(--danger-dim);
+  color: var(--danger);
+}
+
+.export-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5px;
+}
