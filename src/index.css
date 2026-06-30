@@ -420,3 +420,16 @@ html, body {
   transition: all var(--t-fast);
   position: relative;
 }
+
+.palette-color:hover {
+  transform: scale(1.15);
+  z-index: 1;
+  box-shadow: var(--shadow-md);
+}
+
+.palette-color.selected {
+  border-color: var(--accent-light);
+  box-shadow: 0 0 0 1px var(--accent), 0 0 8px var(--accent-glow);
+  transform: scale(1.1);
+  z-index: 1;
+}
