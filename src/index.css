@@ -1011,3 +1011,18 @@ input[type="range"]::-webkit-slider-thumb:active {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.6; }
 }
+
+.canvas-hint {
+  position: absolute;
+  bottom: 44px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 10px;
+  color: var(--text-muted);
+  background: var(--bg-panel);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-sm);
+  padding: 4px 12px;
+  pointer-events: none;
+  white-space: nowrap;
+}
