@@ -858,3 +858,25 @@ input[type="range"]::-webkit-slider-thumb:active {
   background: var(--accent);
   color: #fff;
 }
+
+.brush-size-row {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.brush-size-btn {
+  flex: 1;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+  color: var(--text-secondary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 4px;
+  min-height: 32px;
+  transition: all var(--t-fast);
+  font-size: 10px;
+  font-family: var(--font-sans);
+}
