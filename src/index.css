@@ -963,3 +963,17 @@ input[type="range"]::-webkit-slider-thumb:active {
   font-size: 11px;
   color: var(--text-secondary);
 }
+.toggle-badge {
+  font-size: 9px;
+  padding: 2px 5px;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+}
+
+.frame-actions {
+  display: flex;
+  gap: 2px;
+  opacity: 0;
+  transition: opacity var(--t-fast);
+  flex-shrink: 0;
+}
