@@ -926,3 +926,17 @@ input[type="range"]::-webkit-slider-thumb:active {
   color: var(--accent-light);
   box-shadow: 0 0 8px var(--accent-glow);
 }
+
+.color-hex-input {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-secondary);
+  background: transparent;
+  border: none;
+  outline: none;
+  letter-spacing: 0.05em;
+  width: calc(100% - 30px);
+}
+.color-hex-input:focus {
+  color: var(--text-primary);
+}
