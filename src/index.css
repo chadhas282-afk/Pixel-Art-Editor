@@ -832,3 +832,16 @@ input[type="range"]::-webkit-slider-thumb:active {
   color: var(--text-secondary);
   font-family: var(--font-mono);
 }
+.header-dot { color: var(--text-muted); }
+.header-btn {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 500;
+  padding: 4px 10px;
+  cursor: pointer;
+  transition: all var(--t-fast);
+}
