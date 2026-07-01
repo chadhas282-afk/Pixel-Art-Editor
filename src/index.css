@@ -1065,3 +1065,21 @@ input[type="range"]::-webkit-slider-thumb:active {
   color: var(--text-primary);
   letter-spacing: -0.02em;
 }
+.shortcuts-close {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-sm);
+  color: var(--text-muted);
+  font-size: 12px;
+  padding: 4px 8px;
+  cursor: pointer;
+  transition: all var(--t-fast);
+}
+.shortcuts-close:hover { background: var(--bg-hover); color: var(--text-primary); }
+
+.shortcuts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 0;
+  padding: 16px 24px 20px;
+}
