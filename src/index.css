@@ -915,3 +915,14 @@ input[type="range"]::-webkit-slider-thumb:active {
   justify-content: center;
   transition: all var(--t-fast);
 }
+.symmetry-btn:hover {
+  background: var(--bg-hover);
+  border-color: var(--border-strong);
+  color: var(--text-primary);
+}
+.symmetry-btn.active {
+  background: var(--accent-dim);
+  border-color: var(--accent);
+  color: var(--accent-light);
+  box-shadow: 0 0 8px var(--accent-glow);
+}
