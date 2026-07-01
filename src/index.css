@@ -894,3 +894,24 @@ input[type="range"]::-webkit-slider-thumb:active {
   flex-shrink: 0;
   transition: background var(--t-fast);
 }
+.brush-size-btn.active .brush-dot { background: var(--accent-light); }
+.brush-size-btn:hover .brush-dot  { background: var(--text-primary); }
+
+.symmetry-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4px;
+}
+.symmetry-btn {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+  color: var(--text-secondary);
+  font-size: 14px;
+  padding: 7px 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--t-fast);
+}
