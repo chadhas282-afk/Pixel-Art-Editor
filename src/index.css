@@ -845,3 +845,16 @@ input[type="range"]::-webkit-slider-thumb:active {
   cursor: pointer;
   transition: all var(--t-fast);
 }
+.header-btn:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+}
+.header-btn--accent {
+  background: var(--accent-dim);
+  border-color: var(--accent);
+  color: var(--accent-light);
+}
+.header-btn--accent:hover {
+  background: var(--accent);
+  color: #fff;
+}
