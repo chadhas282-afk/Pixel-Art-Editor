@@ -808,3 +808,19 @@ input[type="range"]::-webkit-slider-thumb:active {
   z-index: 100;
   box-shadow: var(--shadow-md);
 }
+
+[data-tooltip]:hover::after {
+  opacity: 1;
+}
+
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 2px; }
+
+.header-divider {
+  width: 1px;
+  height: 18px;
+  background: var(--border-default);
+  margin: 0 8px;
+  flex-shrink: 0;
+}
