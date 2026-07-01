@@ -977,3 +977,19 @@ input[type="range"]::-webkit-slider-thumb:active {
   transition: opacity var(--t-fast);
   flex-shrink: 0;
 }
+.frame-item:hover .frame-actions { opacity: 1; }
+.frame-action-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 2px 4px;
+  border-radius: var(--radius-sm);
+  font-size: 10px;
+  transition: all var(--t-fast);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.frame-action-btn:hover { background: var(--bg-hover); color: var(--text-primary); }
+.frame-action-btn:disabled { opacity: 0.2; cursor: not-allowed; }
