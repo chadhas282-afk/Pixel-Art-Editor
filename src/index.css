@@ -744,3 +744,16 @@ input[type="range"]::-webkit-slider-thumb:active {
   grid-template-columns: 1fr 1fr;
   gap: 5px;
 }
+.pixel-coords {
+  position: absolute;
+  bottom: 12px;
+  right: 16px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-muted);
+  background: var(--bg-panel);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-sm);
+  padding: 3px 8px;
+  pointer-events: none;
+}
