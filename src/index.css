@@ -880,3 +880,17 @@ input[type="range"]::-webkit-slider-thumb:active {
   font-size: 10px;
   font-family: var(--font-sans);
 }
+.brush-size-btn:hover {
+  background: var(--bg-hover);
+  border-color: var(--border-strong);
+}
+.brush-size-btn.active {
+  background: var(--accent-dim);
+  border-color: var(--accent);
+}
+.brush-dot {
+  border-radius: 50%;
+  background: var(--text-secondary);
+  flex-shrink: 0;
+  transition: background var(--t-fast);
+}
